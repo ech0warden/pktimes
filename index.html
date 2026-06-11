@@ -1,0 +1,1712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeoWatch — Global Affairs, Defence & Diplomacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --bg2: #141414;
+    --bg3: #1a1a1a;
+    --bg4: #242424;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --text: #e8e6df;
+    --text2: #a09e96;
+    --text3: #6b6a63;
+    --accent: #c8a96e;
+    --accent2: #e63946;
+    --red: #e63946;
+    --blue: #4a90d9;
+    --green: #2ecc8a;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', sans-serif;
+    --font-cond: 'Roboto Condensed', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  a { color: inherit; text-decoration: none; }
+  a:hover { color: var(--accent); }
+
+  img { display: block; width: 100%; object-fit: cover; }
+
+  /* ─── TOP TICKER ─────────────────────────────────────── */
+  .ticker {
+    background: var(--accent2);
+    color: #fff;
+    font-family: var(--font-cond);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 6px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-block;
+    animation: ticker 40s linear infinite;
+  }
+  .ticker-inner span {
+    margin: 0 40px;
+  }
+  .ticker-inner span::before {
+    content: '●';
+    margin-right: 12px;
+    opacity: 0.7;
+  }
+  @keyframes ticker {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────── */
+  header {
+    border-bottom: 1px solid var(--border2);
+    background: var(--bg);
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px 16px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .masthead {
+    text-align: center;
+    flex: 1;
+  }
+
+  .masthead-name {
+    font-family: var(--font-display);
+    font-size: 52px;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: #fff;
+    line-height: 1;
+  }
+
+  .masthead-name span {
+    color: var(--accent);
+  }
+
+  .masthead-tagline {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-top: 4px;
+  }
+
+  .header-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    min-width: 180px;
+  }
+
+  .header-date {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+  }
+
+  .header-edition {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .header-social {
+    display: flex;
+    gap: 12px;
+    min-width: 180px;
+  }
+
+  .social-btn {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    font-size: 12px;
+    color: var(--text2);
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .social-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* ─── NAV ────────────────────────────────────────────── */
+  nav {
+    border-top: 1px solid var(--border);
+    background: var(--bg2);
+  }
+
+  .nav-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 0;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 13px 18px;
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text2);
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+  }
+
+  .nav-links li a.active {
+    color: var(--accent);
+  }
+
+  .nav-search {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-search input {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 7px 14px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    width: 200px;
+    outline: none;
+    transition: border 0.2s;
+  }
+
+  .nav-search input:focus { border-color: var(--accent); }
+  .nav-search input::placeholder { color: var(--text3); }
+
+  /* ─── MAIN LAYOUT ───────────────────────────────────── */
+  .site-body {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* ─── HERO ───────────────────────────────────────────── */
+  .hero {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+    margin: 0 -40px;
+    padding: 0 40px;
+  }
+
+  .hero-lead {
+    padding: 32px 40px 32px 0;
+    border-right: 1px solid var(--border);
+  }
+
+  .hero-image-wrap {
+    position: relative;
+    height: 420px;
+    overflow: hidden;
+    background: var(--bg3);
+    margin-bottom: 20px;
+  }
+
+  .hero-image-wrap img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8) contrast(1.1);
+    transition: transform 0.4s ease;
+  }
+
+  .hero-image-wrap:hover img {
+    transform: scale(1.02);
+  }
+
+  .hero-category {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--accent2);
+    color: #fff;
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    z-index: 2;
+  }
+
+  .hero-label {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 14px;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .hero-title:hover { color: var(--accent); }
+
+  .hero-deck {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--text2);
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+
+  .hero-byline {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .hero-byline .author { color: var(--accent); font-weight: 700; }
+
+  .byline-dot { width: 3px; height: 3px; background: var(--text3); border-radius: 50%; }
+
+  /* Hero sidebar */
+  .hero-sidebar {
+    padding: 32px 0 32px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .sidebar-story {
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .sidebar-story:first-child { padding-top: 0; }
+  .sidebar-story:last-child { border-bottom: none; }
+
+  .sidebar-story:hover .sidebar-title { color: var(--accent); }
+
+  .sidebar-cat {
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 6px;
+  }
+
+  .sidebar-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+
+  .sidebar-time {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  /* ─── SECTION LABEL ─────────────────────────────────── */
+  .section-label {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text3);
+    padding: 28px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-label.accent-line::before {
+    content: '';
+    width: 20px;
+    height: 2px;
+    background: var(--accent);
+    display: block;
+  }
+
+  /* ─── CARD GRID ─────────────────────────────────────── */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+
+  .card {
+    padding: 20px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .card:hover { background: var(--bg2); }
+  .card:hover .card-title { color: var(--accent); }
+
+  .card-image {
+    height: 160px;
+    overflow: hidden;
+    background: var(--bg3);
+    margin-bottom: 14px;
+  }
+
+  .card-image img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.85) contrast(1.05);
+    transition: transform 0.4s;
+  }
+
+  .card:hover .card-image img { transform: scale(1.04); }
+
+  .card-cat {
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .cat-diplomacy { color: var(--blue); }
+  .cat-defence   { color: var(--green); }
+  .cat-conflict  { color: var(--red); }
+  .cat-terrorism { color: #e67e22; }
+  .cat-analysis  { color: var(--accent); }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    line-height: 1.35;
+    color: var(--text);
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .card-summary {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--text2);
+    margin-bottom: 12px;
+  }
+
+  .card-meta {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    color: var(--text3);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* ─── 3-COL LAYOUT ──────────────────────────────────── */
+  .three-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+
+  .col-story {
+    padding: 24px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .col-story:hover { background: var(--bg2); }
+  .col-story:hover .col-title { color: var(--accent); }
+
+  .col-image {
+    height: 200px;
+    overflow: hidden;
+    background: var(--bg3);
+    margin-bottom: 16px;
+  }
+
+  .col-image img {
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.82) contrast(1.1);
+    transition: transform 0.4s;
+  }
+
+  .col-story:hover .col-image img { transform: scale(1.04); }
+
+  .col-cat {
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .col-title {
+    font-family: var(--font-display);
+    font-size: 21px;
+    line-height: 1.3;
+    color: var(--text);
+    margin-bottom: 10px;
+    transition: color 0.2s;
+  }
+
+  .col-deck {
+    font-size: 13.5px;
+    line-height: 1.65;
+    color: var(--text2);
+    margin-bottom: 14px;
+  }
+
+  .col-meta {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  /* ─── ANALYSIS STRIP ────────────────────────────────── */
+  .analysis-strip {
+    background: var(--bg2);
+    border-top: 2px solid var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 0;
+    margin: 0 -40px 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  .analysis-grid {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+  }
+
+  .analysis-label-block {
+    border-right: 1px solid var(--border2);
+    padding-right: 32px;
+  }
+
+  .analysis-big-label {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+
+  .analysis-sub {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text3);
+  }
+
+  .analysis-item {
+    cursor: pointer;
+    padding: 4px 0;
+  }
+
+  .analysis-item:hover .analysis-title { color: var(--accent); }
+
+  .analysis-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 900;
+    color: var(--bg4);
+    -webkit-text-stroke: 1px var(--border2);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .analysis-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    line-height: 1.35;
+    color: var(--text);
+    margin-bottom: 6px;
+    transition: color 0.2s;
+  }
+
+  .analysis-excerpt {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--text2);
+  }
+
+  /* ─── OPINION ROW ───────────────────────────────────── */
+  .opinion-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+
+  .opinion-card {
+    padding: 24px;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background 0.2s;
+    position: relative;
+  }
+
+  .opinion-card:hover { background: var(--bg2); }
+
+  .opinion-quote-mark {
+    font-family: var(--font-display);
+    font-size: 60px;
+    line-height: 0.8;
+    color: var(--accent);
+    opacity: 0.25;
+    margin-bottom: 8px;
+  }
+
+  .opinion-text {
+    font-family: var(--font-display);
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--text);
+    font-style: italic;
+    margin-bottom: 16px;
+  }
+
+  .opinion-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: auto;
+  }
+
+  .author-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--bg4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    flex-shrink: 0;
+    border: 1px solid var(--border2);
+  }
+
+  .author-name {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  .author-role {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  /* ─── DATA / TRACKER ────────────────────────────────── */
+  .data-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .data-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+
+  .data-block-title {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .conflict-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+
+  .conflict-item:last-child { border-bottom: none; }
+
+  .conflict-status {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .status-active   { background: var(--red); box-shadow: 0 0 6px rgba(230,57,70,0.6); }
+  .status-simmering{ background: #e67e22; }
+  .status-frozen   { background: var(--text3); }
+
+  .conflict-name {
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .conflict-region {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .conflict-tag {
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+
+  .tag-active   { background: rgba(230,57,70,0.15); color: var(--red); }
+  .tag-watching { background: rgba(230,126,34,0.15); color: #e67e22; }
+  .tag-monitor  { background: rgba(107,106,99,0.3); color: var(--text3); }
+
+  /* ─── NEWSLETTER BANNER ─────────────────────────────── */
+  .newsletter {
+    background: var(--bg3);
+    border: 1px solid var(--border2);
+    border-top: 2px solid var(--accent);
+    padding: 32px 40px;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .newsletter-text { flex: 1; }
+
+  .newsletter-text h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .newsletter-text p {
+    font-size: 13.5px;
+    color: var(--text2);
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 0;
+    flex-shrink: 0;
+  }
+
+  .newsletter-form input {
+    background: var(--bg);
+    border: 1px solid var(--border2);
+    border-right: none;
+    color: var(--text);
+    padding: 11px 18px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    width: 260px;
+    outline: none;
+  }
+
+  .newsletter-form input::placeholder { color: var(--text3); }
+
+  .newsletter-form button {
+    background: var(--accent);
+    color: var(--bg);
+    border: none;
+    padding: 11px 24px;
+    font-family: var(--font-cond);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .newsletter-form button:hover { background: #e6b97a; }
+
+  /* ─── FOOTER ─────────────────────────────────────────── */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border2);
+    padding: 40px;
+  }
+
+  .footer-inner {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 240px 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 32px;
+  }
+
+  .footer-brand .masthead-name {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--text3);
+    line-height: 1.6;
+    margin-top: 10px;
+  }
+
+  .footer-col h4 {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .footer-col ul li a {
+    font-size: 13px;
+    color: var(--text2);
+    transition: color 0.2s;
+  }
+
+  .footer-col ul li a:hover { color: var(--accent); }
+
+  .footer-bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-bottom p {
+    font-family: var(--font-cond);
+    font-size: 12px;
+    color: var(--text3);
+    letter-spacing: 0.04em;
+  }
+
+  /* ─── ARTICLE PAGE ──────────────────────────────────── */
+  .article-page { display: none; }
+
+  .article-page.active { display: block; }
+
+  .article-header {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid var(--border);
+    max-width: 760px;
+  }
+
+  .article-cat-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .article-cat {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .article-cat-sep { color: var(--border2); }
+
+  .article-region {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .article-title {
+    font-family: var(--font-display);
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.15;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+
+  .article-deck {
+    font-size: 18px;
+    line-height: 1.65;
+    color: var(--text2);
+    margin-bottom: 20px;
+  }
+
+  .article-meta-bar {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: var(--font-cond);
+    font-size: 12px;
+    color: var(--text3);
+  }
+
+  .article-meta-bar .author { color: var(--accent); font-weight: 700; }
+
+  .article-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 48px;
+    padding: 40px 0;
+  }
+
+  .article-body {
+    max-width: 680px;
+  }
+
+  .article-hero-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    filter: brightness(0.85) contrast(1.1);
+    margin-bottom: 10px;
+  }
+
+  .article-img-cap {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    color: var(--text3);
+    margin-bottom: 32px;
+  }
+
+  .article-body p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text2);
+    margin-bottom: 20px;
+  }
+
+  .article-body h2 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    color: #fff;
+    margin: 32px 0 14px;
+    font-weight: 700;
+  }
+
+  .article-body blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 4px 20px;
+    margin: 28px 0;
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.55;
+  }
+
+  .article-sidebar-sticky {
+    position: sticky;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .sidebar-widget {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 20px;
+  }
+
+  .widget-title {
+    font-family: var(--font-cond);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .related-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+  }
+
+  .related-item:last-child { border-bottom: none; }
+
+  .related-item:hover .related-title { color: var(--accent); }
+
+  .related-cat {
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 5px;
+  }
+
+  .related-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    line-height: 1.35;
+    color: var(--text);
+    transition: color 0.2s;
+  }
+
+  /* ─── LIVE BADGE ────────────────────────────────────── */
+  .live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--accent2);
+    color: #fff;
+    font-family: var(--font-cond);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    margin-bottom: 16px;
+  }
+
+  .live-dot {
+    width: 6px;
+    height: 6px;
+    background: #fff;
+    border-radius: 50%;
+    animation: pulse 1.2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Back button */
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-cond);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text3);
+    cursor: pointer;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+    transition: color 0.2s;
+  }
+
+  .back-btn:hover { color: var(--accent); }
+
+  /* ─── RESPONSIVE ────────────────────────────────────── */
+  @media (max-width: 1100px) {
+    .card-grid { grid-template-columns: 1fr 1fr; }
+    .analysis-grid { grid-template-columns: 1fr 1fr; }
+    .footer-inner { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .header-top { padding: 16px 20px; }
+    .site-body { padding: 0 20px; }
+    .hero { grid-template-columns: 1fr; margin: 0 -20px; padding: 0 20px; }
+    .hero-sidebar { border-top: 1px solid var(--border); padding: 20px 0 0; border-right: none; }
+    .card-grid { grid-template-columns: 1fr; }
+    .three-col { grid-template-columns: 1fr; }
+    .opinion-row { grid-template-columns: 1fr; }
+    .analysis-grid { grid-template-columns: 1fr; }
+    .data-row { grid-template-columns: 1fr; }
+    .newsletter { flex-direction: column; gap: 20px; padding: 24px 20px; }
+    .newsletter-form { width: 100%; }
+    .newsletter-form input { flex: 1; width: auto; }
+    .article-layout { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .masthead-name { font-size: 36px; }
+    .analysis-strip { margin: 0 -20px 40px; padding: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker" aria-label="Breaking news ticker">
+  <div class="ticker-inner">
+    <span>UN Security Council meets in emergency session over escalation in disputed waters</span>
+    <span>NATO allies pledge additional air defence systems to frontline members</span>
+    <span>Back-channel diplomacy reportedly underway between rival nuclear powers</span>
+    <span>New satellite imagery shows rapid military build-up along contested border</span>
+    <span>Global terror threat index rises to highest level since 2019</span>
+    <span>G7 foreign ministers issue joint statement condemning proxy warfare</span>
+    <span>UN Security Council meets in emergency session over escalation in disputed waters</span>
+    <span>NATO allies pledge additional air defence systems to frontline members</span>
+    <span>Back-channel diplomacy reportedly underway between rival nuclear powers</span>
+    <span>New satellite imagery shows rapid military build-up along contested border</span>
+    <span>Global terror threat index rises to highest level since 2019</span>
+    <span>G7 foreign ministers issue joint statement condemning proxy warfare</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="header-top">
+    <div class="header-social">
+      <div class="social-btn" title="Twitter/X">&#120143;</div>
+      <div class="social-btn" title="LinkedIn">in</div>
+      <div class="social-btn" title="Telegram">✈</div>
+    </div>
+    <div class="masthead">
+      <div class="masthead-name">Geo<span>Watch</span></div>
+      <div class="masthead-tagline">Global Affairs · Defence · Diplomacy · Security</div>
+    </div>
+    <div class="header-meta">
+      <div class="header-date" id="live-date"></div>
+      <div class="header-edition">Global Edition</div>
+    </div>
+  </div>
+  <nav>
+    <div class="nav-inner">
+      <ul class="nav-links">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#" onclick="filterCategory('diplomacy'); return false;">Diplomacy</a></li>
+        <li><a href="#" onclick="filterCategory('defence'); return false;">Defence</a></li>
+        <li><a href="#" onclick="filterCategory('conflict'); return false;">Conflicts</a></li>
+        <li><a href="#" onclick="filterCategory('terrorism'); return false;">Counter-Terror</a></li>
+        <li><a href="#" onclick="filterCategory('analysis'); return false;">Analysis</a></li>
+        <li><a href="#">Intelligence</a></li>
+      </ul>
+      <div class="nav-search">
+        <input type="text" placeholder="Search GeoWatch…" id="search-input" oninput="handleSearch(this.value)">
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- HOMEPAGE -->
+<div id="homepage">
+  <div class="site-body">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-lead">
+        <div class="hero-image-wrap" onclick="openArticle('hero')">
+          <div class="hero-category">Breaking</div>
+          <img src="https://images.unsplash.com/photo-1614035781521-578f8e71fb78?w=900&q=70" alt="UN Security Council chamber" loading="lazy">
+        </div>
+        <div class="hero-label">Diplomacy · United Nations</div>
+        <h1 class="hero-title" onclick="openArticle('hero')">
+          Security Council deadlocked as maritime standoff enters third week, diplomatic channels near collapse
+        </h1>
+        <p class="hero-deck">
+          Vetoes from two permanent members have paralysed the United Nations Security Council as a flashpoint confrontation over contested shipping lanes threatens to draw regional naval forces into direct engagement for the first time in decades.
+        </p>
+        <div class="hero-byline">
+          <span class="author">James Whitfield</span>
+          <span class="byline-dot"></span>
+          <span>Senior Diplomatic Correspondent</span>
+          <span class="byline-dot"></span>
+          <span>2 hours ago</span>
+        </div>
+      </div>
+
+      <div class="hero-sidebar">
+        <div class="sidebar-story" onclick="openArticle('sidebar1')">
+          <div class="sidebar-cat">Defence · NATO</div>
+          <div class="sidebar-title">Alliance scrambles additional F-35 squadrons to Baltic region amid intelligence warnings</div>
+          <div class="sidebar-time">45 minutes ago</div>
+        </div>
+        <div class="sidebar-story" onclick="openArticle('sidebar2')">
+          <div class="sidebar-cat">Conflict · Middle East</div>
+          <div class="sidebar-title">Ceasefire framework collapses; ground offensive resumes in northern sector</div>
+          <div class="sidebar-time">1 hour ago</div>
+        </div>
+        <div class="sidebar-story" onclick="openArticle('sidebar3')">
+          <div class="sidebar-cat">Counter-Terror</div>
+          <div class="sidebar-title">European intelligence services dismantle cross-border financing network</div>
+          <div class="sidebar-time">3 hours ago</div>
+        </div>
+        <div class="sidebar-story" onclick="openArticle('sidebar4')">
+          <div class="sidebar-cat">Analysis</div>
+          <div class="sidebar-title">Why the arc of instability is widening faster than multilateral institutions can respond</div>
+          <div class="sidebar-time">4 hours ago</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LATEST STORIES -->
+    <div class="section-label accent-line">Latest Stories</div>
+
+    <div class="card-grid" id="card-grid">
+      <div class="card" onclick="openArticle('card1')">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&q=60" alt="Military aircraft" loading="lazy"></div>
+        <div class="card-cat cat-defence">Defence</div>
+        <div class="card-title">Fifth-generation air superiority gap widens as adversary numbers outpace Western production rates</div>
+        <div class="card-summary">Classified assessments obtained by GeoWatch reveal a significant numerical disadvantage forming in the Indo-Pacific theatre as legacy platforms are retired faster than replacements arrive.</div>
+        <div class="card-meta"><span>Sarah Chen</span><span class="byline-dot" style="width:3px;height:3px;background:var(--text3);border-radius:50%;display:inline-block"></span><span>Defence Desk</span></div>
+      </div>
+
+      <div class="card" onclick="openArticle('card2')">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=500&q=60" alt="Diplomatic handshake" loading="lazy"></div>
+        <div class="card-cat cat-diplomacy">Diplomacy</div>
+        <div class="card-title">Backchannel summit between rival powers confirms secret talks on nuclear risk reduction</div>
+        <div class="card-summary">Senior officials from two nuclear-armed states have met covertly four times this year in a third country, sources with knowledge of the meetings tell GeoWatch.</div>
+        <div class="card-meta"><span>Priya Mehta</span><span class="byline-dot" style="width:3px;height:3px;background:var(--text3);border-radius:50%;display:inline-block"></span><span>Diplomatic Affairs</span></div>
+      </div>
+
+      <div class="card" onclick="openArticle('card3')">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1580977251946-b79f33b38f15?w=500&q=60" alt="Urban conflict zone" loading="lazy"></div>
+        <div class="card-cat cat-conflict">Conflict</div>
+        <div class="card-title">Urban warfare doctrine is evolving faster than military academies can absorb its lessons</div>
+        <div class="card-summary">Commanders who fought in dense urban terrain describe a fundamental break from doctrines written for manoeuvre warfare across open ground.</div>
+        <div class="card-meta"><span>Aleksei Kurov</span><span class="byline-dot" style="width:3px;height:3px;background:var(--text3);border-radius:50%;display:inline-block"></span><span>Conflict Correspondent</span></div>
+      </div>
+
+      <div class="card" onclick="openArticle('card4')">
+        <div class="card-image"><img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?w=500&q=60" alt="Digital network" loading="lazy"></div>
+        <div class="card-cat cat-terrorism">Counter-Terror</div>
+        <div class="card-title">Encrypted platforms become primary recruitment infrastructure for decentralised terror cells</div>
+        <div class="card-summary">An 18-month intelligence review finds that the shift to end-to-end encryption has fundamentally changed how extremist organisations identify and radicalise new members.</div>
+        <div class="card-meta"><span>Fatima Al-Hassan</span><span class="byline-dot" style="width:3px;height:3px;background:var(--text3);border-radius:50%;display:inline-block"></span><span>Security Correspondent</span></div>
+      </div>
+    </div>
+
+    <!-- ANALYSIS STRIP -->
+    <div class="analysis-strip">
+      <div class="analysis-grid">
+        <div class="analysis-label-block">
+          <div class="analysis-big-label">Analysis &amp; Commentary</div>
+          <div class="analysis-sub">Depth beyond the headlines</div>
+        </div>
+
+        <div class="analysis-item" onclick="openArticle('analysis1')">
+          <div class="analysis-num">01</div>
+          <div class="analysis-title">The coming decade of contested maritime sovereignty</div>
+          <div class="analysis-excerpt">How overlapping claims and weakening international norms are setting the stage for confrontation at sea.</div>
+        </div>
+
+        <div class="analysis-item" onclick="openArticle('analysis2')">
+          <div class="analysis-num">02</div>
+          <div class="analysis-title">Drone warfare has permanently altered the cost calculus of territorial defence</div>
+          <div class="analysis-excerpt">Cheap attritable systems are eroding the advantage held by expensive precision platforms — and states are only beginning to adapt.</div>
+        </div>
+
+        <div class="analysis-item" onclick="openArticle('analysis3')">
+          <div class="analysis-num">03</div>
+          <div class="analysis-title">Why multilateralism is failing at precisely the moment it is most needed</div>
+          <div class="analysis-excerpt">The institutions built after 1945 were designed for a world that no longer exists. The question is what replaces them.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- THREE-COL SECTION -->
+    <div class="section-label accent-line">In Depth</div>
+    <div class="three-col">
+      <div class="col-story" onclick="openArticle('indepth1')">
+        <div class="col-image"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=600&q=60" alt="Border region" loading="lazy"></div>
+        <div class="col-cat cat-conflict">Conflict · South Asia</div>
+        <h3 class="col-title">The mountain passes that determine which power controls the roof of the world</h3>
+        <p class="col-deck">A ground-level examination of high-altitude positions whose tactical significance belies their remote location — and why both sides have spent billions fortifying them.</p>
+        <div class="col-meta">Field Report · 12 min read</div>
+      </div>
+
+      <div class="col-story" onclick="openArticle('indepth2')">
+        <div class="col-image"><img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=600&q=60" alt="Naval vessels" loading="lazy"></div>
+        <div class="col-cat cat-defence">Defence · Pacific</div>
+        <h3 class="col-title">The submarine arms race no one is officially acknowledging</h3>
+        <p class="col-deck">Three navies are simultaneously expanding and modernising undersea fleets in the same theatre, in a competition that analysts say eclipses anything seen since the Cold War.</p>
+        <div class="col-meta">Investigation · 18 min read</div>
+      </div>
+
+      <div class="col-story" onclick="openArticle('indepth3')">
+        <div class="col-image"><img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=600&q=60" alt="UN assembly hall" loading="lazy"></div>
+        <div class="col-cat cat-diplomacy">Diplomacy · Global</div>
+        <h3 class="col-title">The informal summits reshaping alliances that formal treaties cannot capture</h3>
+        <p class="col-deck">Beneath the scheduled multilateral forums, a parallel architecture of bilateral and minilateral meetings is producing the actual agreements that govern state behaviour.</p>
+        <div class="col-meta">Long Read · 22 min read</div>
+      </div>
+    </div>
+
+    <!-- OPINION -->
+    <div class="section-label accent-line">Opinion</div>
+    <div class="opinion-row">
+      <div class="opinion-card" onclick="openArticle('opinion1')">
+        <div class="opinion-quote-mark">"</div>
+        <div class="opinion-text">The West is re-learning lessons about industrial warfare that it spent thirty years trying to forget. The question is whether the education comes fast enough.</div>
+        <div class="opinion-author">
+          <div class="author-avatar">RH</div>
+          <div>
+            <div class="author-name">Robert Haines</div>
+            <div class="author-role">Former NATO Deputy Secretary</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="opinion-card" onclick="openArticle('opinion2')">
+        <div class="opinion-quote-mark">"</div>
+        <div class="opinion-text">Sanctions have become the policy of choice for governments unwilling to use force but unable to use diplomacy. The record shows they rarely achieve their stated objectives.</div>
+        <div class="opinion-author">
+          <div class="author-avatar">NK</div>
+          <div>
+            <div class="author-name">Nadia Kowalczyk</div>
+            <div class="author-role">Senior Fellow, Strategic Studies Institute</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="opinion-card" onclick="openArticle('opinion3')">
+        <div class="opinion-quote-mark">"</div>
+        <div class="opinion-text">Counter-terrorism policy in the Sahel has failed not because of lack of resources, but because external partners consistently misread the political economy of local grievances.</div>
+        <div class="opinion-author">
+          <div class="author-avatar">AM</div>
+          <div>
+            <div class="author-name">Aisha Mbeki</div>
+            <div class="author-role">Director, African Security Research Group</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONFLICT TRACKER + DATA -->
+    <div class="section-label accent-line">Conflict Tracker</div>
+    <div class="data-row">
+      <div class="data-block">
+        <div class="data-block-title">Active &amp; Monitored Conflicts</div>
+        <div class="conflict-item">
+          <div class="conflict-status status-active"></div>
+          <div>
+            <div class="conflict-name">Eastern European Front</div>
+            <div class="conflict-region">Europe · Ongoing ground war</div>
+          </div>
+          <div class="conflict-tag tag-active">Active War</div>
+        </div>
+        <div class="conflict-item">
+          <div class="conflict-status status-active"></div>
+          <div>
+            <div class="conflict-name">Middle East Multi-front</div>
+            <div class="conflict-region">Levant · Gaza, Lebanon, Yemen</div>
+          </div>
+          <div class="conflict-tag tag-active">Active</div>
+        </div>
+        <div class="conflict-item">
+          <div class="conflict-status status-simmering"></div>
+          <div>
+            <div class="conflict-name">South Asia High-Altitude</div>
+            <div class="conflict-region">Himalayas · Border standoff</div>
+          </div>
+          <div class="conflict-tag tag-watching">Watching</div>
+        </div>
+        <div class="conflict-item">
+          <div class="conflict-status status-simmering"></div>
+          <div>
+            <div class="conflict-name">Taiwan Strait</div>
+            <div class="conflict-region">Pacific · Naval tension</div>
+          </div>
+          <div class="conflict-tag tag-watching">Watching</div>
+        </div>
+        <div class="conflict-item">
+          <div class="conflict-status status-frozen"></div>
+          <div>
+            <div class="conflict-name">Sahel Insurgency Belt</div>
+            <div class="conflict-region">West Africa · Jihadist activity</div>
+          </div>
+          <div class="conflict-tag tag-monitor">Monitor</div>
+        </div>
+        <div class="conflict-item">
+          <div class="conflict-status status-frozen"></div>
+          <div>
+            <div class="conflict-name">Korean Peninsula</div>
+            <div class="conflict-region">East Asia · Armistice line</div>
+          </div>
+          <div class="conflict-tag tag-monitor">Monitor</div>
+        </div>
+      </div>
+
+      <div class="data-block">
+        <div class="data-block-title">Diplomatic Calendar — Next 30 Days</div>
+        <div class="conflict-item">
+          <div style="font-family:var(--font-cond);font-size:11px;color:var(--accent);font-weight:700;min-width:40px">Jun 15</div>
+          <div>
+            <div class="conflict-name">G7 Foreign Ministers' Meeting</div>
+            <div class="conflict-region">Italy — Agenda: sanctions coordination, AI weapons governance</div>
+          </div>
+        </div>
+        <div class="conflict-item">
+          <div style="font-family:var(--font-cond);font-size:11px;color:var(--accent);font-weight:700;min-width:40px">Jun 19</div>
+          <div>
+            <div class="conflict-name">UN Human Rights Council Session</div>
+            <div class="conflict-region">Geneva — Focus: occupied territory accountability</div>
+          </div>
+        </div>
+        <div class="conflict-item">
+          <div style="font-family:var(--font-cond);font-size:11px;color:var(--accent);font-weight:700;min-width:40px">Jun 24</div>
+          <div>
+            <div class="conflict-name">SCO Defence Ministers' Summit</div>
+            <div class="conflict-region">Beijing — Military interoperability talks</div>
+          </div>
+        </div>
+        <div class="conflict-item">
+          <div style="font-family:var(--font-cond);font-size:11px;color:var(--accent);font-weight:700;min-width:40px">Jul 02</div>
+          <div>
+            <div class="conflict-name">NATO Defence Planning Committee</div>
+            <div class="conflict-region">Brussels — Article 5 contingency review</div>
+          </div>
+        </div>
+        <div class="conflict-item">
+          <div style="font-family:var(--font-cond);font-size:11px;color:var(--accent);font-weight:700;min-width:40px">Jul 09</div>
+          <div>
+            <div class="conflict-name">ASEAN Security Forum</div>
+            <div class="conflict-region">Kuala Lumpur — South China Sea disputes</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEWSLETTER -->
+    <div class="newsletter">
+      <div class="newsletter-text">
+        <h3>The GeoWatch Briefing</h3>
+        <p>Every morning: three conflicts to watch, one diplomatic development, and one analysis — in under four minutes. Free, no spam.</p>
+      </div>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your email address">
+        <button onclick="subscribeNewsletter()">Subscribe Free</button>
+      </div>
+    </div>
+
+  </div><!-- /site-body -->
+</div><!-- /homepage -->
+
+
+<!-- ARTICLE PAGE -->
+<div id="article-page" class="article-page site-body">
+  <div class="back-btn" onclick="closeArticle()">← Back to GeoWatch</div>
+
+  <div class="article-header">
+    <div class="live-badge"><div class="live-dot"></div> Live Coverage</div>
+    <div class="article-cat-bar">
+      <span class="article-cat" id="art-cat">Diplomacy</span>
+      <span class="article-cat-sep">·</span>
+      <span class="article-region" id="art-region">United Nations</span>
+    </div>
+    <h1 class="article-title" id="art-title">Security Council deadlocked as maritime standoff enters third week</h1>
+    <p class="article-deck" id="art-deck">Vetoes from two permanent members have paralysed the United Nations Security Council as a flashpoint confrontation threatens to draw regional naval forces into direct engagement.</p>
+    <div class="article-meta-bar">
+      <span class="author" id="art-author">James Whitfield</span>
+      <span>·</span>
+      <span id="art-role">Senior Diplomatic Correspondent</span>
+      <span>·</span>
+      <span id="art-time">2 hours ago</span>
+      <span>·</span>
+      <span>9 min read</span>
+    </div>
+  </div>
+
+  <div class="article-layout">
+    <div class="article-body">
+      <img class="article-hero-img" src="https://images.unsplash.com/photo-1614035781521-578f8e71fb78?w=900&q=70" alt="UN Security Council" id="art-img">
+      <p class="article-img-cap">The UN Security Council chamber in New York, where emergency sessions have failed to produce a binding resolution. Photo: UN Photo</p>
+
+      <p>The United Nations Security Council entered its third consecutive day of emergency deliberations on Thursday without resolution, as the diplomatic paralysis surrounding a contested maritime corridor deepened into what several ambassadors privately described as the most serious institutional failure in years.</p>
+
+      <p>Two permanent members exercised veto rights against competing draft resolutions, leaving the international community without a formal response mechanism as naval vessels from three separate powers manoeuvred within engagement range of one another in the disputed zone.</p>
+
+      <blockquote>The architecture of post-war multilateralism was designed to manage great power competition, not to resolve it. What we are witnessing is the mechanism grinding against its own design limits.</blockquote>
+
+      <h2>The anatomy of a deadlock</h2>
+
+      <p>According to multiple diplomatic sources, the impasse reflects not merely disagreement over the current incident, but a deeper fracturing of the informal norms that allowed the Council to function even during periods of great power antagonism. The practice of abstention as a diplomatic middle ground — which allowed contentious resolutions to pass without requiring states to endorse positions they found untenable — has largely collapsed.</p>
+
+      <p>A senior Western diplomat, speaking on condition of anonymity because they were not authorised to discuss internal Council deliberations, described the atmosphere as "fundamentally different from anything I have experienced in fifteen years of multilateral work."</p>
+
+      <p>The breakdown in Council procedure has coincided with a deterioration in the backchannel communication that typically supplements formal diplomatic processes. Three separate bilateral hotlines that had previously been used to manage crisis escalation have reportedly gone silent since the standoff began.</p>
+
+      <h2>Naval movements and the risk of miscalculation</h2>
+
+      <p>The immediate physical danger lies not in deliberate military action but in the potential for miscalculation at sea, where the rules of engagement for vessels operating in the same contested waters are both legally disputed and practically untested. Defence analysts tracking vessel movements via commercial satellite imagery report that the current configuration represents the closest proximity of adversarial naval assets since a near-incident three years ago.</p>
+
+      <p>GeoWatch has reviewed communications obtained from maritime monitoring organisations suggesting that at least two incidents of radio contact between vessels flying different flags occurred in the past 48 hours — contacts that were not disclosed in official statements from any government.</p>
+
+      <p>The absence of a neutral communications channel, combined with the breakdown in Security Council procedure, has led several states not directly party to the dispute to begin exploring alternative diplomatic frameworks for de-escalation. Three non-permanent Council members have circulated a draft proposal for a temporary joint monitoring arrangement, though its prospects for adoption remain uncertain.</p>
+    </div>
+
+    <div class="article-sidebar-sticky">
+      <div class="sidebar-widget">
+        <div class="widget-title">Related Coverage</div>
+        <div class="related-item" onclick="openArticle('sidebar1')">
+          <div class="related-cat cat-defence">Defence · NATO</div>
+          <div class="related-title">Alliance scrambles additional F-35 squadrons to Baltic region</div>
+        </div>
+        <div class="related-item" onclick="openArticle('card2')">
+          <div class="related-cat cat-diplomacy">Diplomacy</div>
+          <div class="related-title">Backchannel summit confirms secret talks on nuclear risk reduction</div>
+        </div>
+        <div class="related-item" onclick="openArticle('analysis3')">
+          <div class="related-cat cat-analysis">Analysis</div>
+          <div class="related-title">Why multilateralism is failing at precisely the moment it is most needed</div>
+        </div>
+        <div class="related-item" onclick="openArticle('indepth3')">
+          <div class="related-cat cat-diplomacy">Diplomacy</div>
+          <div class="related-title">The informal summits reshaping alliances that formal treaties cannot capture</div>
+        </div>
+      </div>
+
+      <div class="sidebar-widget">
+        <div class="widget-title">Context</div>
+        <div style="font-size:13px;color:var(--text2);line-height:1.6">
+          <p style="margin-bottom:10px">The Security Council has five permanent members with veto power: China, France, Russia, United Kingdom, and United States.</p>
+          <p>Since 1946, the veto has been exercised over 300 times. Its use has accelerated significantly since 2011.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="masthead-name" style="font-size:26px">Geo<span>Watch</span></div>
+      <p>Independent reporting on global affairs, defence, and diplomacy. Committed to accuracy, depth, and editorial independence.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Sections</h4>
+      <ul>
+        <li><a href="#">Diplomacy</a></li>
+        <li><a href="#">Defence &amp; Military</a></li>
+        <li><a href="#">Active Conflicts</a></li>
+        <li><a href="#">Counter-Terrorism</a></li>
+        <li><a href="#">Intelligence</a></li>
+        <li><a href="#">Analysis</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About GeoWatch</a></li>
+        <li><a href="#">Editorial Standards</a></li>
+        <li><a href="#">Contact the Newsroom</a></li>
+        <li><a href="#">Tip Line (Secure)</a></li>
+        <li><a href="#">Advertise</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Subscribe</h4>
+      <ul>
+        <li><a href="#">Morning Briefing</a></li>
+        <li><a href="#">Defence Weekly</a></li>
+        <li><a href="#">Diplomatic Cables</a></li>
+        <li><a href="#">Premium Access</a></li>
+        <li><a href="#">RSS Feeds</a></li>
+        <li><a href="#">Podcast</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 GeoWatch. All rights reserved. Editorial independence guaranteed.</p>
+    <p>Privacy Policy · Terms of Use · Cookie Settings</p>
+  </div>
+</footer>
+
+
+<script>
+  // Live date
+  const d = new Date();
+  document.getElementById('live-date').textContent = d.toLocaleDateString('en-GB', {weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
+  // Article data
+  const articles = {
+    hero:     { cat:'Diplomacy', region:'United Nations', title:'Security Council deadlocked as maritime standoff enters third week', deck:'Vetoes from two permanent members have paralysed the United Nations Security Council.', author:'James Whitfield', role:'Senior Diplomatic Correspondent', time:'2 hours ago', img:'https://images.unsplash.com/photo-1614035781521-578f8e71fb78?w=900&q=70' },
+    sidebar1: { cat:'Defence', region:'NATO · Baltic', title:'Alliance scrambles additional F-35 squadrons to Baltic region amid intelligence warnings', deck:'NATO has quietly repositioned two additional squadrons of F-35 aircraft to airfields in the Baltic states following intelligence assessments.', author:'Marcus Brandt', role:'Defence Correspondent', time:'45 minutes ago', img:'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=70' },
+    sidebar2: { cat:'Conflict', region:'Middle East', title:'Ceasefire framework collapses; ground offensive resumes in northern sector', deck:'A fragile ceasefire agreement has broken down after 11 days, with ground forces resuming operations across the northern front.', author:'Layla Nasser', role:'Middle East Bureau', time:'1 hour ago', img:'https://images.unsplash.com/photo-1580977251946-b79f33b38f15?w=900&q=70' },
+    sidebar3: { cat:'Counter-Terror', region:'Europe', title:'European intelligence services dismantle cross-border financing network', deck:'A coordinated operation across seven countries has disrupted a financial network used to fund extremist activity.', author:'Fatima Al-Hassan', role:'Security Correspondent', time:'3 hours ago', img:'https://images.unsplash.com/photo-1605792657660-596af9009e82?w=900&q=70' },
+    sidebar4: { cat:'Analysis', region:'Global', title:'Why the arc of instability is widening faster than multilateral institutions can respond', deck:'A structural analysis of the gap between the pace of geopolitical change and the capacity of international organisations to manage it.', author:'Dr. Elena Voronova', role:'Senior Analyst', time:'4 hours ago', img:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=70' },
+    card1:    { cat:'Defence', region:'Indo-Pacific', title:'Fifth-generation air superiority gap widens as adversary numbers outpace Western production rates', deck:'Classified assessments reveal a significant numerical disadvantage forming in the Indo-Pacific theatre.', author:'Sarah Chen', role:'Defence Desk', time:'5 hours ago', img:'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=70' },
+    card2:    { cat:'Diplomacy', region:'Asia', title:'Backchannel summit between rival powers confirms secret talks on nuclear risk reduction', deck:'Senior officials from two nuclear-armed states have met covertly four times this year in a third country.', author:'Priya Mehta', role:'Diplomatic Affairs', time:'6 hours ago', img:'https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=900&q=70' },
+    card3:    { cat:'Conflict', region:'Global', title:'Urban warfare doctrine is evolving faster than military academies can absorb its lessons', deck:'Commanders who fought in dense urban terrain describe a fundamental break from doctrines written for manoeuvre warfare.', author:'Aleksei Kurov', role:'Conflict Correspondent', time:'7 hours ago', img:'https://images.unsplash.com/photo-1580977251946-b79f33b38f15?w=900&q=70' },
+    card4:    { cat:'Counter-Terror', region:'Global', title:'Encrypted platforms become primary recruitment infrastructure for decentralised terror cells', deck:'An 18-month intelligence review finds that end-to-end encryption has fundamentally changed how extremist organisations radicalise members.', author:'Fatima Al-Hassan', role:'Security Correspondent', time:'8 hours ago', img:'https://images.unsplash.com/photo-1605792657660-596af9009e82?w=900&q=70' },
+    analysis1:{ cat:'Analysis', region:'Maritime', title:'The coming decade of contested maritime sovereignty', deck:'How overlapping claims and weakening international norms are setting the stage for confrontation at sea.', author:'Prof. David Tan', role:'Maritime Security Fellow', time:'Yesterday', img:'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=70' },
+    analysis2:{ cat:'Analysis', region:'Technology & War', title:'Drone warfare has permanently altered the cost calculus of territorial defence', deck:'Cheap attritable systems are eroding the advantage held by expensive precision platforms.', author:'Dr. Claire Svensson', role:'Technology & Conflict', time:'Yesterday', img:'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=70' },
+    analysis3:{ cat:'Analysis', region:'Global Governance', title:'Why multilateralism is failing at precisely the moment it is most needed', deck:'The institutions built after 1945 were designed for a world that no longer exists. The question is what replaces them.', author:'Dr. Elena Voronova', role:'Senior Analyst', time:'2 days ago', img:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=70' },
+    indepth1: { cat:'Conflict', region:'South Asia', title:'The mountain passes that determine which power controls the roof of the world', deck:'A ground-level examination of high-altitude positions whose tactical significance belies their remote location.', author:'Vikram Nair', role:'South Asia Correspondent', time:'2 days ago', img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=70' },
+    indepth2: { cat:'Defence', region:'Pacific', title:'The submarine arms race no one is officially acknowledging', deck:'Three navies are simultaneously expanding and modernising undersea fleets in a competition that eclipses the Cold War.', author:'James Whitfield', role:'Senior Diplomatic Correspondent', time:'3 days ago', img:'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=70' },
+    indepth3: { cat:'Diplomacy', region:'Global', title:'The informal summits reshaping alliances that formal treaties cannot capture', deck:'Beneath the formal multilateral forums, a parallel architecture of bilateral meetings is producing the actual agreements that govern state behaviour.', author:'Priya Mehta', role:'Diplomatic Affairs', time:'3 days ago', img:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=70' },
+    opinion1: { cat:'Opinion', region:'Defence Policy', title:'The West is re-learning the lessons of industrial warfare', deck:'Robert Haines on why the education may not be coming fast enough.', author:'Robert Haines', role:'Former NATO Deputy Secretary', time:'Yesterday', img:'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=70' },
+    opinion2: { cat:'Opinion', region:'Foreign Policy', title:'Sanctions rarely achieve their stated objectives. Here is why we keep using them.', deck:'Nadia Kowalczyk examines the political logic of an instrument with a poor track record.', author:'Nadia Kowalczyk', role:'Senior Fellow, Strategic Studies Institute', time:'2 days ago', img:'https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=900&q=70' },
+    opinion3: { cat:'Opinion', region:'Africa', title:'Counter-terrorism in the Sahel has failed because we misread the problem', deck:'Aisha Mbeki argues that external partners consistently misread the political economy of local grievances.', author:'Aisha Mbeki', role:'Director, African Security Research Group', time:'3 days ago', img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=70' }
+  };
+
+  function openArticle(id) {
+    const a = articles[id];
+    if (!a) return;
+    document.getElementById('art-cat').textContent = a.cat;
+    document.getElementById('art-region').textContent = a.region;
+    document.getElementById('art-title').textContent = a.title;
+    document.getElementById('art-deck').textContent = a.deck;
+    document.getElementById('art-author').textContent = a.author;
+    document.getElementById('art-role').textContent = a.role;
+    document.getElementById('art-time').textContent = a.time;
+    document.getElementById('art-img').src = a.img;
+    document.getElementById('art-img').alt = a.title;
+    document.getElementById('homepage').style.display = 'none';
+    document.getElementById('article-page').style.display = 'block';
+    window.scrollTo(0, 0);
+  }
+
+  function closeArticle() {
+    document.getElementById('homepage').style.display = 'block';
+    document.getElementById('article-page').style.display = 'none';
+    window.scrollTo(0, 0);
+  }
+
+  function filterCategory(cat) {
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    event.target.classList.add('active');
+  }
+
+  function handleSearch(val) {
+    // Placeholder for search functionality
+  }
+
+  function subscribeNewsletter() {
+    const input = document.querySelector('.newsletter-form input');
+    if (input.value && input.value.includes('@')) {
+      input.value = '';
+      input.placeholder = '✓ Subscribed! Check your inbox.';
+      setTimeout(() => { input.placeholder = 'Your email address'; }, 4000);
+    }
+  }
+</script>
+</body>
+</html>
