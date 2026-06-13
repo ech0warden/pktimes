@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PK-Times — War, Diplomacy & Global Affairs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600;700&family=Barlow+Condensed:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black:   #0a0a0a;
+  --ink:     #111111;
+  --ink2:    #1c1c1c;
+  --ink3:    #2a2a2a;
+  --border:  #2e2e2e;
+  --border2: #3d3d3d;
+  --smoke:   #f5f4f0;
+  --smoke2:  #eeece6;
+  --paper:   #ffffff;
+  --text:    #1a1a1a;
+  --text2:   #444444;
+  --text3:   #777777;
+  --text4:   #999999;
+  --red:     #cc0000;
+  --red2:    #a80000;
+  --gold:    #b8860b;
+  --gold2:   #d4a017;
+  --blue:    #1a4a8a;
+  --teal:    #0d6b6b;
+  --orange:  #c45000;
+  --serif:   'Merriweather', Georgia, serif;
+  --sans:    'Inter', system-ui, sans-serif;
+  --cond:    'Barlow Condensed', 'Arial Narrow', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--paper);color:var(--text);font-family:var(--sans);font-size:15px;line-height:1.6;}
+a{color:inherit;text-decoration:none;}
+img{display:block;width:100%;object-fit:cover;}
+button{cursor:pointer;border:none;background:none;font-family:inherit;}
+
+/* ── UTILITY ── */
+.container{max-width:1280px;margin:0 auto;padding:0 20px;}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);}
+
+/* ── TICKER ── */
+.ticker-wrap{background:var(--red);overflow:hidden;padding:7px 0;}
+.ticker-label{display:inline-block;background:var(--black);color:#fff;font-family:var(--cond);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:0 14px;margin-right:16px;line-height:28px;vertical-align:middle;}
+.ticker-track{display:inline-flex;animation:tick 50s linear infinite;white-space:nowrap;vertical-align:middle;}
+.ticker-track span{color:#fff;font-family:var(--cond);font-size:12px;font-weight:600;letter-spacing:.04em;margin-right:60px;}
+.ticker-track span::before{content:"▸";margin-right:10px;opacity:.7;}
+@keyframes tick{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+/* ── TOP BAR ── */
+.topbar{border-bottom:1px solid var(--smoke2);padding:8px 0;}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;}
+.topbar-left{font-family:var(--cond);font-size:11px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;}
+.topbar-right{display:flex;align-items:center;gap:16px;}
+.topbar-right a{font-family:var(--cond);font-size:11px;color:var(--text3);letter-spacing:.06em;text-transform:uppercase;transition:color .2s;}
+.topbar-right a:hover{color:var(--red);}
+.topbar-divider{width:1px;height:12px;background:var(--smoke2);}
+
+/* ── HEADER ── */
+.site-header{border-bottom:3px solid var(--black);background:var(--paper);}
+.header-main{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 0 16px;}
+.header-left{display:flex;align-items:center;gap:10px;}
+.header-social a{display:flex;align-items:center;justify-content:center;width:30px;height:30px;border:1px solid var(--smoke2);font-family:var(--cond);font-size:11px;font-weight:700;color:var(--text3);transition:all .2s;}
+.header-social a:hover{background:var(--black);color:#fff;border-color:var(--black);}
+.header-social{display:flex;gap:6px;}
+.masthead{text-align:center;}
+.masthead-logo{font-family:var(--cond);font-size:56px;font-weight:800;letter-spacing:-.02em;color:var(--black);line-height:1;text-transform:uppercase;}
+.masthead-logo span{color:var(--red);}
+.masthead-tagline{font-family:var(--cond);font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:var(--text3);margin-top:3px;}
+.header-right{display:flex;justify-content:flex-end;align-items:center;gap:12px;}
+.search-form{display:flex;align-items:center;border:1px solid var(--smoke2);overflow:hidden;}
+.search-form input{border:none;outline:none;padding:7px 12px;font-family:var(--sans);font-size:13px;color:var(--text);background:transparent;width:180px;}
+.search-form input::placeholder{color:var(--text4);}
+.search-form button{padding:7px 12px;background:var(--black);color:#fff;font-size:13px;}
+.subscribe-btn-header{background:var(--red);color:#fff;font-family:var(--cond);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:8px 18px;transition:background .2s;}
+.subscribe-btn-header:hover{background:var(--red2);}
+
+/* ── MAIN NAV ── */
+.main-nav{background:var(--black);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;}
+.nav-links{display:flex;list-style:none;}
+.nav-links li a{display:block;padding:13px 16px;font-family:var(--cond);font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.7);border-bottom:3px solid transparent;transition:all .2s;white-space:nowrap;}
+.nav-links li a:hover,.nav-links li a.active{color:#fff;border-bottom-color:var(--red);}
+.nav-links li a.active{color:var(--gold2);}
+.nav-live{display:flex;align-items:center;gap:8px;padding:0 16px;}
+.live-dot{width:7px;height:7px;background:var(--red);border-radius:50%;animation:pulse 1.2s ease-in-out infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.8);}}
+.live-text{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--red);}
+
+/* ── AD BANNER ── */
+.ad-banner{background:var(--smoke);border-top:1px solid var(--smoke2);border-bottom:1px solid var(--smoke2);padding:10px 0;text-align:center;}
+.ad-slot{display:inline-flex;align-items:center;justify-content:center;background:var(--smoke2);border:1px dashed #ccc;height:90px;width:100%;max-width:728px;font-family:var(--cond);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text4);}
+.ad-slot-rect{display:flex;align-items:center;justify-content:center;background:var(--smoke2);border:1px dashed #ccc;height:250px;width:300px;font-family:var(--cond);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text4);flex-shrink:0;}
+.ad-slot-inline{display:flex;align-items:center;justify-content:center;background:var(--smoke2);border:1px dashed #ccc;height:100px;width:100%;font-family:var(--cond);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--text4);margin:24px 0;}
+
+/* ── CATEGORY PILL ── */
+.cat{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;display:inline-block;}
+.cat-war{color:var(--red);}
+.cat-diplomacy{color:var(--blue);}
+.cat-defence{color:var(--teal);}
+.cat-conflict{color:var(--orange);}
+.cat-terrorism{color:#8b0000;}
+.cat-local{color:var(--gold);}
+.cat-analysis{color:#555;}
+.cat-columns{color:#6b4f8a;}
+
+/* ── SECTION HEADER ── */
+.sec-header{display:flex;align-items:center;gap:14px;margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid var(--black);}
+.sec-title{font-family:var(--cond);font-size:13px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--black);}
+.sec-line{flex:1;height:1px;background:var(--smoke2);}
+.sec-more{font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--red);white-space:nowrap;transition:color .2s;}
+.sec-more:hover{color:var(--red2);}
+
+/* ── HERO ── */
+.hero-section{padding:24px 0 0;}
+.hero-grid{display:grid;grid-template-columns:1fr 340px;gap:0;border:1px solid var(--smoke2);}
+.hero-main{border-right:1px solid var(--smoke2);}
+.hero-img-wrap{position:relative;height:460px;overflow:hidden;background:#111;}
+.hero-img-wrap img{height:100%;object-fit:cover;filter:brightness(.88);transition:transform .5s ease;}
+.hero-img-wrap:hover img{transform:scale(1.03);}
+.hero-cat-badge{position:absolute;top:0;left:0;background:var(--red);color:#fff;font-family:var(--cond);font-size:11px;font-weight:800;letter-spacing:.15em;text-transform:uppercase;padding:6px 14px;}
+.hero-content{padding:20px 24px 24px;}
+.hero-label{font-family:var(--cond);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:8px;}
+.hero-title{font-family:var(--serif);font-size:30px;font-weight:900;line-height:1.2;color:var(--black);margin-bottom:12px;cursor:pointer;transition:color .2s;}
+.hero-title:hover{color:var(--red);}
+.hero-deck{font-size:14px;line-height:1.7;color:var(--text2);margin-bottom:14px;}
+.hero-meta{font-family:var(--cond);font-size:11px;color:var(--text3);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.hero-meta .author{color:var(--black);font-weight:700;}
+.meta-sep{color:var(--smoke2);}
+
+/* Hero sidebar stories */
+.hero-sidebar{display:flex;flex-direction:column;}
+.hs-story{padding:16px 18px;border-bottom:1px solid var(--smoke2);cursor:pointer;transition:background .18s;}
+.hs-story:last-child{border-bottom:none;}
+.hs-story:hover{background:var(--smoke);}
+.hs-story:hover .hs-title{color:var(--red);}
+.hs-img{height:110px;overflow:hidden;background:#ddd;margin-bottom:10px;}
+.hs-img img{height:100%;object-fit:cover;transition:transform .4s;}
+.hs-story:hover .hs-img img{transform:scale(1.05);}
+.hs-cat{margin-bottom:5px;}
+.hs-title{font-family:var(--serif);font-size:14px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:5px;transition:color .18s;}
+.hs-time{font-family:var(--cond);font-size:10px;color:var(--text4);}
+
+/* ── TOP STORIES STRIP ── */
+.top-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--smoke2);border-top:none;}
+.strip-item{padding:16px;border-right:1px solid var(--smoke2);cursor:pointer;transition:background .18s;}
+.strip-item:last-child{border-right:none;}
+.strip-item:hover{background:var(--smoke);}
+.strip-item:hover .strip-title{color:var(--red);}
+.strip-num{font-family:var(--cond);font-size:28px;font-weight:800;color:var(--smoke2);line-height:1;margin-bottom:4px;}
+.strip-cat{margin-bottom:6px;}
+.strip-title{font-family:var(--serif);font-size:13.5px;font-weight:700;line-height:1.35;color:var(--black);transition:color .18s;}
+.strip-time{font-family:var(--cond);font-size:10px;color:var(--text4);margin-top:8px;}
+
+/* ── MAIN BODY LAYOUT ── */
+.body-layout{display:grid;grid-template-columns:1fr 300px;gap:32px;padding:32px 0;}
+.main-col{min-width:0;}
+.sidebar-col{min-width:0;}
+
+/* ── CARD ── */
+.card{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--smoke2);cursor:pointer;}
+.card:first-child{padding-top:0;}
+.card:hover .card-title{color:var(--red);}
+.card-img{width:140px;height:95px;flex-shrink:0;overflow:hidden;background:#ddd;}
+.card-img img{height:100%;object-fit:cover;transition:transform .4s;}
+.card:hover .card-img img{transform:scale(1.06);}
+.card-body{flex:1;min-width:0;}
+.card-cat{margin-bottom:5px;}
+.card-title{font-family:var(--serif);font-size:15px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:5px;transition:color .18s;}
+.card-deck{font-size:12.5px;line-height:1.6;color:var(--text2);margin-bottom:6px;}
+.card-meta{font-family:var(--cond);font-size:10px;color:var(--text4);}
+
+/* ── THREE COL ── */
+.three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--smoke2);margin-bottom:32px;}
+.tc-item{padding:18px;border-right:1px solid var(--smoke2);cursor:pointer;transition:background .18s;}
+.tc-item:last-child{border-right:none;}
+.tc-item:hover{background:var(--smoke);}
+.tc-item:hover .tc-title{color:var(--red);}
+.tc-img{height:160px;overflow:hidden;background:#ddd;margin-bottom:14px;}
+.tc-img img{height:100%;object-fit:cover;transition:transform .4s;}
+.tc-item:hover .tc-img img{transform:scale(1.05);}
+.tc-cat{margin-bottom:7px;}
+.tc-title{font-family:var(--serif);font-size:16px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:8px;transition:color .18s;}
+.tc-deck{font-size:12.5px;line-height:1.6;color:var(--text2);margin-bottom:8px;}
+.tc-meta{font-family:var(--cond);font-size:10px;color:var(--text4);}
+
+/* ── ANALYSIS STRIP ── */
+.analysis-strip{background:var(--black);padding:28px 0;margin:0 0 32px;}
+.as-inner{display:grid;grid-template-columns:180px repeat(3,1fr);gap:24px;align-items:start;}
+.as-label{border-right:1px solid var(--border);padding-right:24px;}
+.as-big{font-family:var(--cond);font-size:32px;font-weight:800;color:var(--gold2);line-height:1.1;text-transform:uppercase;}
+.as-sub{font-family:var(--cond);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--text3);margin-top:4px;}
+.as-item{cursor:pointer;padding:4px 0;}
+.as-item:hover .as-title{color:var(--gold2);}
+.as-n{font-family:var(--cond);font-size:36px;font-weight:800;color:var(--border);line-height:1;margin-bottom:6px;}
+.as-title{font-family:var(--serif);font-size:15px;font-weight:700;line-height:1.35;color:#ddd;margin-bottom:6px;transition:color .2s;}
+.as-excerpt{font-size:12px;line-height:1.6;color:var(--text3);}
+
+/* ── OPINION / COLUMNS ── */
+.opinion-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--smoke2);margin-bottom:32px;}
+.op-card{padding:20px;border-right:1px solid var(--smoke2);cursor:pointer;transition:background .18s;}
+.op-card:last-child{border-right:none;}
+.op-card:hover{background:var(--smoke);}
+.op-q{font-family:var(--serif);font-size:52px;line-height:.8;color:var(--red);opacity:.2;margin-bottom:4px;}
+.op-text{font-family:var(--serif);font-size:14.5px;font-style:italic;line-height:1.55;color:var(--black);margin-bottom:14px;}
+.op-author{display:flex;align-items:center;gap:10px;}
+.op-avatar{width:38px;height:38px;border-radius:50%;background:var(--black);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--cond);font-size:13px;font-weight:700;flex-shrink:0;}
+.op-name{font-family:var(--cond);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--black);}
+.op-role{font-family:var(--cond);font-size:10px;color:var(--text3);}
+
+/* ── LOCAL NEWS ── */
+.local-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--smoke2);margin-bottom:32px;}
+.local-item{padding:16px;border-right:1px solid var(--smoke2);border-bottom:1px solid var(--smoke2);cursor:pointer;transition:background .18s;}
+.local-item:nth-child(even){border-right:none;}
+.local-item:nth-last-child(-n+2){border-bottom:none;}
+.local-item:hover{background:var(--smoke);}
+.local-item:hover .local-title{color:var(--red);}
+.local-img{height:130px;overflow:hidden;background:#ddd;margin-bottom:12px;}
+.local-img img{height:100%;object-fit:cover;transition:transform .4s;}
+.local-item:hover .local-img img{transform:scale(1.05);}
+.local-title{font-family:var(--serif);font-size:15px;font-weight:700;line-height:1.35;color:var(--black);margin-bottom:6px;transition:color .18s;}
+.local-meta{font-family:var(--cond);font-size:10px;color:var(--text4);}
+
+/* ── SIDEBAR ── */
+.sidebar-col{display:flex;flex-direction:column;gap:24px;}
+.sidebar-widget{border:1px solid var(--smoke2);}
+.widget-head{background:var(--black);color:#fff;font-family:var(--cond);font-size:11px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:10px 14px;}
+.widget-body{padding:14px;}
+.widget-story{padding:10px 0;border-bottom:1px solid var(--smoke2);cursor:pointer;}
+.widget-story:last-child{border-bottom:none;}
+.widget-story:hover .widget-title{color:var(--red);}
+.widget-cat{margin-bottom:4px;}
+.widget-title{font-family:var(--serif);font-size:13px;font-weight:700;line-height:1.35;color:var(--black);transition:color .18s;}
+.widget-time{font-family:var(--cond);font-size:10px;color:var(--text4);margin-top:3px;}
+
+/* Conflict tracker */
+.ct-item{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--smoke2);}
+.ct-item:last-child{border-bottom:none;}
+.ct-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.ct-active{background:var(--red);box-shadow:0 0 6px rgba(204,0,0,.5);}
+.ct-watch{background:#e67e22;}
+.ct-monitor{background:#aaa;}
+.ct-name{font-family:var(--cond);font-size:12px;font-weight:700;color:var(--black);flex:1;}
+.ct-region{font-family:var(--cond);font-size:10px;color:var(--text4);}
+.ct-tag{font-family:var(--cond);font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;}
+.ct-tag-active{background:rgba(204,0,0,.1);color:var(--red);}
+.ct-tag-watch{background:rgba(230,126,34,.1);color:#e67e22;}
+.ct-tag-mon{background:var(--smoke2);color:var(--text3);}
+
+/* ── NEWSLETTER ── */
+.newsletter-section{background:var(--black);padding:40px 0;margin:0 0 0;}
+.nl-inner{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.nl-left h2{font-family:var(--serif);font-size:28px;font-weight:900;color:#fff;margin-bottom:8px;}
+.nl-left p{font-size:13.5px;color:rgba(255,255,255,.6);line-height:1.6;}
+.nl-form{display:flex;flex-direction:column;gap:10px;}
+.nl-row{display:flex;gap:0;}
+.nl-input{flex:1;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-right:none;color:#fff;padding:13px 16px;font-family:var(--sans);font-size:14px;outline:none;transition:border .2s;}
+.nl-input:focus{border-color:rgba(255,255,255,.4);}
+.nl-input::placeholder{color:rgba(255,255,255,.35);}
+.nl-btn{background:var(--red);color:#fff;font-family:var(--cond);font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:13px 22px;white-space:nowrap;transition:background .2s;}
+.nl-btn:hover{background:var(--red2);}
+.nl-note{font-family:var(--cond);font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.04em;}
+.nl-opts{display:flex;gap:16px;flex-wrap:wrap;}
+.nl-opt{display:flex;align-items:center;gap:6px;cursor:pointer;}
+.nl-opt input{accent-color:var(--red);}
+.nl-opt span{font-family:var(--cond);font-size:11px;color:rgba(255,255,255,.55);letter-spacing:.04em;}
+
+/* ── ARTICLE PAGE ── */
+.article-page{display:none;padding:32px 0 48px;}
+.art-back{display:inline-flex;align-items:center;gap:8px;font-family:var(--cond);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);cursor:pointer;padding-bottom:20px;border-bottom:1px solid var(--smoke2);margin-bottom:24px;transition:color .2s;width:100%;}
+.art-back:hover{color:var(--red);}
+.art-layout{display:grid;grid-template-columns:1fr 300px;gap:40px;}
+.art-header{margin-bottom:24px;}
+.art-cat-bar{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.art-region{font-family:var(--cond);font-size:10px;color:var(--text3);letter-spacing:.12em;text-transform:uppercase;}
+.art-title{font-family:var(--serif);font-size:38px;font-weight:900;line-height:1.18;color:var(--black);margin-bottom:14px;}
+.art-deck{font-size:17px;line-height:1.65;color:var(--text2);margin-bottom:16px;font-weight:300;}
+.art-meta{font-family:var(--cond);font-size:11px;color:var(--text3);display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--smoke2);}
+.art-meta .author{color:var(--black);font-weight:700;}
+.art-hero{height:420px;overflow:hidden;background:#ddd;margin-bottom:8px;}
+.art-hero img{height:100%;object-fit:cover;}
+.art-cap{font-family:var(--cond);font-size:10px;color:var(--text4);margin-bottom:28px;}
+.art-body p{font-size:16px;line-height:1.85;color:var(--text2);margin-bottom:20px;font-family:var(--serif);font-weight:400;}
+.art-body h2{font-family:var(--serif);font-size:22px;font-weight:900;color:var(--black);margin:32px 0 14px;}
+.art-body blockquote{border-left:3px solid var(--red);padding:6px 20px;margin:28px 0;font-family:var(--serif);font-size:17px;font-style:italic;color:var(--black);line-height:1.6;}
+.art-sidebar{position:sticky;top:70px;}
+
+/* ── FOOTER ── */
+.site-footer{background:var(--black);color:rgba(255,255,255,.7);padding:48px 0 0;}
+.footer-top{display:grid;grid-template-columns:220px repeat(4,1fr);gap:32px;margin-bottom:36px;}
+.footer-brand .logo{font-family:var(--cond);font-size:28px;font-weight:800;color:#fff;text-transform:uppercase;margin-bottom:10px;}
+.footer-brand .logo span{color:var(--red);}
+.footer-brand p{font-size:12px;line-height:1.65;color:rgba(255,255,255,.4);margin-top:8px;}
+.footer-col h4{font-family:var(--cond);font-size:10px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.footer-col ul li a{font-size:12.5px;color:rgba(255,255,255,.55);transition:color .2s;}
+.footer-col ul li a:hover{color:var(--gold2);}
+.footer-bottom{border-top:1px solid var(--border);padding:16px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;}
+.footer-bottom p{font-family:var(--cond);font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.04em;}
+.footer-bottom-links{display:flex;gap:18px;}
+.footer-bottom-links a{font-family:var(--cond);font-size:11px;color:rgba(255,255,255,.3);transition:color .2s;}
+.footer-bottom-links a:hover{color:rgba(255,255,255,.6);}
+
+/* ── MODAL ── */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:1000;align-items:center;justify-content:center;}
+.modal-overlay.open{display:flex;}
+.modal{background:#fff;width:90%;max-width:480px;padding:36px;position:relative;}
+.modal-close{position:absolute;top:14px;right:16px;font-size:22px;color:var(--text3);cursor:pointer;line-height:1;}
+.modal-close:hover{color:var(--red);}
+.modal h3{font-family:var(--serif);font-size:22px;font-weight:900;margin-bottom:6px;}
+.modal p{font-size:13px;color:var(--text2);margin-bottom:18px;}
+.modal-form{display:flex;flex-direction:column;gap:10px;}
+.modal-form input{border:1px solid var(--smoke2);padding:11px 14px;font-family:var(--sans);font-size:14px;outline:none;transition:border .2s;}
+.modal-form input:focus{border-color:var(--black);}
+.modal-form button{background:var(--red);color:#fff;font-family:var(--cond);font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:13px;transition:background .2s;}
+.modal-form button:hover{background:var(--red2);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-sidebar{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--smoke2);}
+  .hs-story{border-right:1px solid var(--smoke2);}
+  .body-layout{grid-template-columns:1fr;}
+  .sidebar-col{display:grid;grid-template-columns:repeat(2,1fr);}
+  .as-inner{grid-template-columns:1fr 1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .header-main{grid-template-columns:1fr auto;}
+  .header-left{display:none;}
+  .masthead-logo{font-size:36px;}
+  .top-strip{grid-template-columns:1fr 1fr;}
+  .three-col{grid-template-columns:1fr;}
+  .opinion-grid{grid-template-columns:1fr;}
+  .local-grid{grid-template-columns:1fr;}
+  .local-item:nth-child(even){border-right:none;}
+  .local-item{border-right:none;}
+  .as-inner{grid-template-columns:1fr;}
+  .nl-inner{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr 1fr;}
+  .art-layout{grid-template-columns:1fr;}
+  .art-title{font-size:26px;}
+  .nav-links li a{padding:12px 10px;font-size:11px;}
+  .hero-sidebar{grid-template-columns:1fr;}
+  .sidebar-col{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="container" style="overflow:hidden;white-space:nowrap;">
+    <span class="ticker-label">Breaking</span>
+    <div class="ticker-track">
+      <span>UN Security Council calls emergency session as naval standoff enters Day 18</span>
+      <span>Pakistan Army confirms joint exercise with allied forces near northern border</span>
+      <span>Ceasefire collapses in northern sector; ground offensive resumes</span>
+      <span>NATO pledges additional air defence systems to frontline member states</span>
+      <span>Terror financing network dismantled across seven European countries</span>
+      <span>Satellite imagery reveals rapid military build-up along disputed border</span>
+      <span>G7 foreign ministers issue joint statement on proxy warfare</span>
+      <span>UN Security Council calls emergency session as naval standoff enters Day 18</span>
+      <span>Pakistan Army confirms joint exercise with allied forces near northern border</span>
+      <span>Ceasefire collapses in northern sector; ground offensive resumes</span>
+      <span>NATO pledges additional air defence systems to frontline member states</span>
+      <span>Terror financing network dismantled across seven European countries</span>
+      <span>Satellite imagery reveals rapid military build-up along disputed border</span>
+      <span>G7 foreign ministers issue joint statement on proxy warfare</span>
+    </div>
+  </div>
+</div>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="container topbar-inner">
+    <div class="topbar-left" id="live-date"></div>
+    <div class="topbar-right">
+      <a href="#">Sign In</a>
+      <div class="topbar-divider"></div>
+      <a href="#">Global Edition</a>
+      <div class="topbar-divider"></div>
+      <a href="#">Urdu</a>
+      <div class="topbar-divider"></div>
+      <a href="#">Tip Line</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container">
+    <div class="header-main">
+      <div class="header-left">
+        <div class="header-social">
+          <a href="#" title="Twitter/X">𝕏</a>
+          <a href="#" title="Facebook">f</a>
+          <a href="#" title="LinkedIn">in</a>
+          <a href="#" title="YouTube">▶</a>
+          <a href="#" title="Telegram">✈</a>
+        </div>
+      </div>
+      <div class="masthead">
+        <div class="masthead-logo">PK<span>-Times</span></div>
+        <div class="masthead-tagline">War · Diplomacy · Defence · Security · Analysis</div>
+      </div>
+      <div class="header-right">
+        <div class="search-form">
+          <input type="text" placeholder="Search PK-Times…" aria-label="Search">
+          <button aria-label="Submit search">&#9906;</button>
+        </div>
+        <button class="subscribe-btn-header" onclick="openModal()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- MAIN NAV -->
+<nav class="main-nav" role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <ul class="nav-links">
+      <li><a href="#" class="active" onclick="showHome(event)">Home</a></li>
+      <li><a href="#" onclick="filterCat('diplomacy',event)">Diplomacy</a></li>
+      <li><a href="#" onclick="filterCat('defence',event)">Defence</a></li>
+      <li><a href="#" onclick="filterCat('conflict',event)">Conflicts</a></li>
+      <li><a href="#" onclick="filterCat('terrorism',event)">Counter-Terror</a></li>
+      <li><a href="#" onclick="filterCat('local',event)">Local News</a></li>
+      <li><a href="#" onclick="filterCat('analysis',event)">Analysis</a></li>
+      <li><a href="#" onclick="filterCat('columns',event)">Columns</a></li>
+    </ul>
+    <div class="nav-live">
+      <div class="live-dot"></div>
+      <span class="live-text">Live Updates</span>
+    </div>
+  </div>
+</nav>
+
+<!-- AD BANNER -->
+<div class="ad-banner">
+  <div class="container">
+    <div class="ad-slot">Advertisement — 728×90 Leaderboard</div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════ HOMEPAGE ══ -->
+<div id="homepage">
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-main">
+        <div class="hero-img-wrap" onclick="openArticle('hero')">
+          <div class="hero-cat-badge">War Report</div>
+          <img src="https://images.unsplash.com/photo-1614035781521-578f8e71fb78?w=900&q=70" alt="UN Security Council">
+        </div>
+        <div class="hero-content">
+          <div class="hero-label">Exclusive · Security Council</div>
+          <h1 class="hero-title" onclick="openArticle('hero')">Security Council paralysed as maritime standoff enters third week, diplomatic channels near collapse</h1>
+          <p class="hero-deck">Vetoes from two permanent members have deadlocked the United Nations as a flashpoint confrontation over contested shipping lanes threatens to draw regional naval forces into direct engagement for the first time in decades.</p>
+          <div class="hero-meta">
+            <span class="author">James Whitfield</span>
+            <span class="meta-sep">|</span>
+            <span>Senior Diplomatic Correspondent</span>
+            <span class="meta-sep">|</span>
+            <span>2 hours ago</span>
+            <span class="meta-sep">|</span>
+            <span>9 min read</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-sidebar">
+        <div class="hs-story" onclick="openArticle('s1')">
+          <div class="hs-img"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&q=60" alt="Defence"></div>
+          <div class="hs-cat"><span class="cat cat-defence">Defence</span></div>
+          <div class="hs-title">NATO scrambles F-35 squadrons to Baltic amid classified intelligence warnings</div>
+          <div class="hs-time">45 min ago</div>
+        </div>
+        <div class="hs-story" onclick="openArticle('s2')">
+          <div class="hs-img"><img src="https://images.unsplash.com/photo-1580977251946-b79f33b38f15?w=400&q=60" alt="Conflict"></div>
+          <div class="hs-cat"><span class="cat cat-conflict">Conflict</span></div>
+          <div class="hs-title">Ceasefire collapses; ground offensive resumes in northern sector</div>
+          <div class="hs-time">1 hr ago</div>
+        </div>
+        <div class="hs-story" onclick="openArticle('s3')">
+          <div class="hs-img"><img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?w=400&q=60" alt="Terror"></div>
+          <div class="hs-cat"><span class="cat cat-terrorism">Counter-Terror</span></div>
+          <div class="hs-title">European agencies dismantle cross-border terror financing network</div>
+          <div class="hs-time">3 hrs ago</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOP STORIES STRIP -->
+    <div class="top-strip">
+      <div class="strip-item" onclick="openArticle('t1')">
+        <div class="strip-num">01</div>
+        <div class="strip-cat"><span class="cat cat-war">War Report</span></div>
+        <div class="strip-title">Drone swarms overwhelm point-defence systems in contested airspace over eastern front</div>
+        <div class="strip-time">32 min ago</div>
+      </div>
+      <div class="strip-item" onclick="openArticle('t2')">
+        <div class="strip-num">02</div>
+        <div class="strip-cat"><span class="cat cat-diplomacy">Diplomacy</span></div>
+        <div class="strip-title">Secret backchannel talks between nuclear-armed rivals confirmed by three independent sources</div>
+        <div class="strip-time">1 hr ago</div>
+      </div>
+      <div class="strip-item" onclick="openArticle('t3')">
+        <div class="strip-num">03</div>
+        <div class="strip-cat"><span class="cat cat-local">Local News</span></div>
+        <div class="strip-title">Pakistan Foreign Office summons envoy over cross-border incursion allegations</div>
+        <div class="strip-time">2 hrs ago</div>
+      </div>
+      <div class="strip-item" onclick="openArticle('t4')">
+        <div class="strip-num">04</div>
+        <div class="strip-cat"><span class="cat cat-analysis">Analysis</span></div>
+        <div class="strip-title">Why multilateral institutions are failing at the moment they are needed most</div>
+        <div class="strip-time">4 hrs ago</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AD -->
+<div class="ad-banner" style="margin:24px 0 0;">
+  <div class="container"><div class="ad-slot">Advertisement — 728×90</div></div>
+</div>
+
+<!-- MAIN BODY -->
+<div class="container">
+  <div class="body-layout">
+    <div class="main-col">
+
+      <!-- DIPLOMACY -->
+      <div class="sec-header">
+        <div class="sec-title">Diplomacy</div>
+        <div class="sec-line"></div>
+        <a href="#" class="sec-more">More Diplomacy →</a>
+      </div>
+      <div class="three-col" style="margin-bottom:0;">
+        <div class="tc-item" onclick="openArticle('d1')">
+          <div class="tc-img"><img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=500&q=60" alt="Diplomacy"></div>
+          <div class="tc-cat"><span class="cat cat-diplomacy">Diplomacy</span></div>
+          <div class="tc-title">G7 foreign ministers draft joint framework to curb proxy warfare funding</div>
+          <div class="tc-deck">A confidential draft circulated ahead of the Italy summit proposes a multilateral sanctions mechanism targeting third-party financiers.</div>
+          <div class="tc-meta">Priya Mehta · 5 hrs ago · 7 min</div>
+        </div>
+        <div class="tc-item" onclick="openArticle('d2')">
+          <div class="tc-img"><img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=500&q=60" alt="UN"></div>
+          <div class="tc-cat"><span class="cat cat-diplomacy">Diplomacy</span></div>
+          <div class="tc-title">ASEAN mediators propose neutral monitoring zone in disputed straits</div>
+          <div class="tc-deck">Southeast Asian bloc moves to insert itself diplomatically as great power rivalry threatens freedom of navigation.</div>
+          <div class="tc-meta">Aiyana Reyes · 6 hrs ago · 5 min</div>
+        </div>
+        <div class="tc-item" onclick="openArticle('d3')">
+          <div class="tc-img"><img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=500&q=60" alt="Naval"></div>
+          <div class="tc-cat"><span class="cat cat-diplomacy">Diplomacy</span></div>
+          <div class="tc-title">Informal summits reshaping alliances that formal treaties cannot capture</div>
+          <div class="tc-deck">Beneath the scheduled multilateral forums, a parallel architecture of bilateral meetings is producing the actual agreements that govern state behaviour.</div>
+          <div class="tc-meta">James Whitfield · Yesterday · 18 min</div>
+        </div>
+      </div>
+
+      <div class="ad-slot-inline">Advertisement — 728×90 Mid-Page</div>
+
+      <!-- DEFENCE -->
+      <div class="sec-header">
+        <div class="sec-title">Defence</div>
+        <div class="sec-line"></div>
+        <a href="#" class="sec-more">More Defence →</a>
+      </div>
+      <div class="card" onclick="openArticle('def1')">
+        <div class="card-img"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&q=60" alt="Defence"></div>
+        <div class="card-body">
+          <div class="card-cat"><span class="cat cat-defence">Defence</span></div>
+          <div class="card-title">Fifth-generation air superiority gap widens as adversary production outpaces Western procurement</div>
+          <div class="card-deck">Classified assessments reveal a significant numerical disadvantage forming in the Indo-Pacific as legacy platforms are retired faster than replacements arrive.</div>
+          <div class="card-meta">Sarah Chen · Defence Desk · 5 hrs ago</div>
+        </div>
+      </div>
+      <div class="card" onclick="openArticle('def2')">
+        <div class="card-img"><img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=400&q=60" alt="Naval"></div>
+        <div class="card-body">
+          <div class="card-cat"><span class="cat cat-defence">Defence</span></div>
+          <div class="card-title">Submarine arms race in the Pacific accelerates beyond Cold War precedent</div>
+          <div class="card-deck">Three navies are simultaneously expanding undersea fleets in the same theatre in a competition analysts say is the most intensive in 60 years.</div>
+          <div class="card-meta">Marcus Brandt · 7 hrs ago</div>
+        </div>
+      </div>
+      <div class="card" onclick="openArticle('def3')">
+        <div class="card-img"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=400&q=60" alt="Border"></div>
+        <div class="card-body">
+          <div class="card-cat"><span class="cat cat-defence">Defence</span></div>
+          <div class="card-title">Pakistan deploys additional armoured units to northern sector following border intelligence assessment</div>
+          <div class="card-deck">Sources within GHQ describe the movement as a precautionary posture review rather than offensive preparation.</div>
+          <div class="card-meta">Usman Raza · Islamabad Bureau · 9 hrs ago</div>
+        </div>
+      </div>
+
+      <div class="ad-slot-inline">Advertisement — 728×90 Mid-Page</div>
+
+      <!-- CONFLICTS -->
+      <div class="sec-header">
+        <div class="sec-title">Conflicts</div>
+        <div class="sec-line"></div>
+        <a href="#" class="sec-more">More Conflicts →</a>
+      </div>
+      <div class="three-col" style="margin-bottom:0;">
+        <div class="tc-item" onclick="openArticle('c1')">
+          <div class="tc-img"><img src="https://images.unsplash.com/photo-1580977251946-b79f33b38f15?w=500&q=60" alt="Conflict"></div>
+          <div class="tc-cat"><span class="cat cat-conflict">Conflict</span></div>
+          <div class="tc-title">Urban warfare doctrine evolving faster than military academies can absorb</div>
+          <div class="tc-deck">Commanders who fought in dense urban terrain describe a fundamental break from doctrines written for open-ground manoeuvre warfare.</div>
+          <div class="tc-meta">Aleksei Kurov · 8 hrs ago · 12 min</div>
+        </div>
+        <div class="tc-item" onclick="openArticle('c2')">
+          <div class="tc-img"><img src="https://images.unsplash.com/photo-1614035781521-578f8e71fb78?w=500&q=60" alt="UN"></div>
+          <div class="tc-cat"><span class="cat cat-conflict">Conflict</span></div>
+          <div class="tc-title">Eastern front: artillery exchanges intensify along 140km contact line</div>
+          <div class="tc-deck">Satellite imagery and acoustic monitoring data confirm a significant increase in fire volume over the past 72 hours.</div>
+          <div class="tc-meta">Field Desk · 3 hrs ago · 8 min</div>
+        </div>
+        <div class="tc-item" onclick="openArticle('c3')">
+          <div class="tc-img"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=500&q=60" alt="Mountains"></div>
+          <div class="tc-cat"><span class="cat cat-conflict">Conflict</span></div>
+          <div class="tc-title">High-altitude positions determine which power controls the roof of the world</div>
+          <div class="tc-deck">A ground-level examination of mountain passes whose tactical significance far exceeds their remote location.</div>
+          <div class="tc-meta">Vikram Nair · 2 days ago · 15 min</div>
+        </div>
+      </div>
+
+      <div class="ad-slot-inline">Advertisement — 728×90</div>
+
+    </div><!-- /main-col -->
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar-col">
+
+      <!-- Conflict Tracker -->
+      <div class="sidebar-widget">
+        <div class="widget-head">Conflict Tracker</div>
+        <div class="widget-body" style="padding:10px 14px;">
+          <div class="ct-item"><div class="ct-dot ct-active"></div><div><div class="ct-name">Eastern European Front</div><div class="ct-region">Ground war · Ongoing</div></div><span class="ct-tag ct-tag-active">Active</span></div>
+          <div class="ct-item"><div class="ct-dot ct-active"></div><div><div class="ct-name">Middle East Multi-Front</div><div class="ct-region">Levant · Gaza, Lebanon</div></div><span class="ct-tag ct-tag-active">Active</span></div>
+          <div class="ct-item"><div class="ct-dot ct-watch"></div><div><div class="ct-name">South Asia Highlands</div><div class="ct-region">Himalayas · Standoff</div></div><span class="ct-tag ct-tag-watch">Watching</span></div>
+          <div class="ct-item"><div class="ct-dot ct-watch"></div><div><div class="ct-name">Taiwan Strait</div><div class="ct-region">Pacific · Naval tension</div></div><span class="ct-tag ct-tag-watch">Watching</span></div>
+          <div class="ct-item"><div class="ct-dot ct-monitor"></div><div><div class="ct-name">Sahel Belt</div><div class="ct-region">West Africa · Insurgency</div></div><span class="ct-tag ct-tag-mon">Monitor</span></div>
+        </div>
+      </div>
+
+      <!-- Ad rect -->
+      <div class="ad-slot-rect">Advertisement<br>300×250</div>
+
+      <!-- Most Read -->
+      <div class="sidebar-widget">
+        <div class="widget-head">Most Read</div>
+        <div class="widget-body">
+          <div class="widget-story" onclick="openArticle('hero')"><div class="widget-cat"><span class="cat cat-war">War</span></div><div class="widget-title">Security Council paralysed as maritime standoff enters third week</div><div class="widget-time">2 hrs ago</div></div>
+          <div class="widget-story" onclick="openArticle('def1')"><div class="widget-cat"><span class="cat cat-defence">Defence</span></div><div class="widget-title">Fifth-generation air gap widens in Indo-Pacific</div><div class="widget-time">5 hrs ago</div></div>
+          <div class="widget-story" onclick="openArticle('t2')"><div class="widget-cat"><span class="cat cat-diplomacy">Diplomacy</span></div><div class="widget-title">Secret backchannel talks between nuclear-armed rivals confirmed</div><div class="widget-time">1 hr ago</div></div>
+          <div class="widget-story" onclick="openArticle('c1')"><div class="widget-cat"><span class="cat cat-conflict">Conflict</span></div><div class="widget-title">Urban warfare doctrine evolving faster than academies can absorb</div><div class="widget-time">8 hrs ago</div></div>
+          <div class="widget-story" onclick="openArticle('s3')"><div class="widget-cat"><span class="cat cat-terrorism">Terror</span></div><div class="widget-title">European agencies dismantle cross-border financing network</div><div class="widget-time">3 hrs ago</div></div>
+        </div>
+      </div>
+
+      <!-- Ad rect 2 -->
+      <div class="ad-slot-rect">Advertisement<br>300×250</div>
+
+      <!-- Diplomatic Calendar -->
+      <div class="sidebar-widget">
+        <div class="widget-head">Diplomatic Calendar</div>
+        <div class="widget-body" style="padding:10px 14px;">
+          <div class="ct-item"><div style="font-family:var(--cond);font-size:10px;color:var(--red);font-weight:700;min-width:38px;">Jun 15</div><div><div class="ct-name">G7 Foreign Ministers</div><div class="ct-region">Italy — AI weapons governance</div></div></div>
+          <div class="ct-item"><div style="font-family:var(--cond);font-size:10px;color:var(--red);font-weight:700;min-width:38px;">Jun 19</div><div><div class="ct-name">UN Human Rights Council</div><div class="ct-region">Geneva — Occupied territories</div></div></div>
+          <div class="ct-item"><div style="font-family:var(--cond);font-size:10px;color:var(--red);font-weight:700;min-width:38px;">Jun 24</div><div><div class="ct-name">SCO Defence Summit</div><div class="ct-region">Beijing — Interoperability</div></div></div>
+          <div class="ct-item"><div style="font-family:var(--cond);font-size:10px;color:var(--red);font-weight:700;min-width:38px;">Jul 02</div><div><div class="ct-name">NATO Planning Committee</div><div class="ct-region">Brussels — Article 5 review</div></div></div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- ANALYSIS STRIP -->
+<div class="analysis-strip">
+  <div class="container">
+    <div class="as-inner">
+      <div class="as-label">
+        <div class="as-big">Analysis</div>
+        <div class="as-sub">Depth beyond the headlines</div>
+      </div>
+      <div class="as-item" onclick="openArticle('an1')"><div class="as-n">01</div><div class="as-title">The coming decade of contested maritime sovereignty</div><div class="as-excerpt">Overlapping claims and weakening norms are setting the stage for confrontation at sea.</div></div>
+      <div class="as-item" onclick="openArticle('an2')"><div class="as-n">02</div><div class="as-title">Drone warfare has permanently altered the cost calculus of territorial defence</div><div class="as-excerpt">Cheap attritable systems are eroding the advantage of expensive precision platforms.</div></div>
+      <div class="as-item" onclick="openArticle('an3')"><div class="as-n">03</div><div class="as-title">Why sanctions rarely achieve their stated objectives — yet governments keep using them</div><div class="as-excerpt">An empirical review of 40 years of economic coercion as foreign policy instrument.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- COUNTER-TERROR -->
+<div class="container" style="padding-top:32px;">
+  <div class="sec-header">
+    <div class="sec-title">Counter-Terrorism</div>
+    <div class="sec-line"></div>
+    <a href="#" class="sec-more">More →</a>
+  </div>
+  <div class="three-col">
+    <div class="tc-item" onclick="openArticle('s3')">
+      <div class="tc-img"><img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?w=500&q=60" alt="Terror"></div>
+      <div class="tc-cat"><span class="cat cat-terrorism">Counter-Terror</span></div>
+      <div class="tc-title">European agencies dismantle cross-border terror financing network</div>
+      <div class="tc-deck">A coordinated operation across seven countries disrupts financial infrastructure used to fund extremist activity across three continents.</div>
+      <div class="tc-meta">Fatima Al-Hassan · 3 hrs ago · 9 min</div>
+    </div>
+    <div class="tc-item" onclick="openArticle('ter2')">
+      <div class="tc-img"><img src="https://images.unsplash.com/photo-1580977251946-b79f33b38f15?w=500&q=60" alt="Security"></div>
+      <div class="tc-cat"><span class="cat cat-terrorism">Counter-Terror</span></div>
+      <div class="tc-title">Encrypted platforms become primary recruitment infrastructure for decentralised cells</div>
+      <div class="tc-deck">An 18-month intelligence review finds end-to-end encryption has fundamentally changed how extremist organisations radicalise members.</div>
+      <div class="tc-meta">Intelligence Desk · Yesterday · 14 min</div>
+    </div>
+    <div class="tc-item" onclick="openArticle('ter3')">
+      <div class="tc-img"><img src="https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=500&q=60" alt="Sahel"></div>
+      <div class="tc-cat"><span class="cat cat-terrorism">Counter-Terror</span></div>
+      <div class="tc-title">Sahel counter-terror policy has failed because external partners misread local grievances</div>
+      <div class="tc-deck">Aisha Mbeki argues that the fundamental error was treating an insurgency rooted in governance failure as a military problem.</div>
+      <div class="tc-meta">Aisha Mbeki · 2 days ago · 11 min</div>
+    </div>
+  </div>
+
+  <!-- LOCAL NEWS -->
+  <div class="sec-header">
+    <div class="sec-title">Local News — Pakistan</div>
+    <div class="sec-line"></div>
+    <a href="#" class="sec-more">More Local →</a>
+  </div>
+  <div class="local-grid">
+    <div class="local-item" onclick="openArticle('l1')">
+      <div class="local-img"><img src="https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=500&q=60" alt="Pakistan"></div>
+      <div style="margin-bottom:6px;"><span class="cat cat-local">Local News</span></div>
+      <div class="local-title">Foreign Office summons Indian envoy over alleged cross-border incursion in Azad Kashmir</div>
+      <div class="local-meta">Islamabad Bureau · 2 hrs ago · 6 min read</div>
+    </div>
+    <div class="local-item" onclick="openArticle('l2')">
+      <div class="local-img"><img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=500&q=60" alt="Pakistan Navy"></div>
+      <div style="margin-bottom:6px;"><span class="cat cat-local">Local News</span></div>
+      <div class="local-title">Pakistan Navy commissions two Type-054 frigates acquired from China in Karachi ceremony</div>
+      <div class="local-meta">Karachi Bureau · 4 hrs ago · 5 min read</div>
+    </div>
+    <div class="local-item" onclick="openArticle('l3')">
+      <div class="local-img"><img src="https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=500&q=60" alt="Islamabad"></div>
+      <div style="margin-bottom:6px;"><span class="cat cat-local">Local News</span></div>
+      <div class="local-title">Senate defence committee approves revised military budget with 18 percent increase in R&D allocation</div>
+      <div class="local-meta">Usman Raza · 6 hrs ago · 4 min read</div>
+    </div>
+    <div class="local-item" onclick="openArticle('l4')">
+      <div class="local-img"><img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=500&q=60" alt="Military"></div>
+      <div style="margin-bottom:6px;"><span class="cat cat-local">Local News</span></div>
+      <div class="local-title">COAS holds security review with corps commanders following intelligence assessment on western border</div>
+      <div class="local-meta">GHQ Correspondent · 8 hrs ago · 3 min read</div>
+    </div>
+  </div>
+
+  <!-- COLUMNS / OPINION -->
+  <div class="sec-header">
+    <div class="sec-title">Columns &amp; Opinion</div>
+    <div class="sec-line"></div>
+    <a href="#" class="sec-more">More Columns →</a>
+  </div>
+  <div class="opinion-grid">
+    <div class="op-card" onclick="openArticle('op1')">
+      <div class="op-q">"</div>
+      <div class="op-text">The West is re-learning lessons about industrial warfare it spent thirty years trying to forget. The question is whether the education arrives fast enough.</div>
+      <div class="op-author"><div class="op-avatar">RH</div><div><div class="op-name">Robert Haines</div><div class="op-role">Former NATO Deputy Secretary</div></div></div>
+    </div>
+    <div class="op-card" onclick="openArticle('op2')">
+      <div class="op-q">"</div>
+      <div class="op-text">Pakistan's strategic depth doctrine was designed for a different era. The question is not whether to abandon it but how to evolve it before circumstances force the issue.</div>
+      <div class="op-author"><div class="op-avatar">ZM</div><div><div class="op-name">Zara Mahmood</div><div class="op-role">Strategic Studies Institute, Islamabad</div></div></div>
+    </div>
+    <div class="op-card" onclick="openArticle('op3')">
+      <div class="op-q">"</div>
+      <div class="op-text">Counter-terrorism policy in the Sahel has failed not from lack of resources, but because external partners consistently misread the political economy of local grievances.</div>
+      <div class="op-author"><div class="op-avatar">AM</div><div><div class="op-name">Aisha Mbeki</div><div class="op-role">African Security Research Group</div></div></div>
+    </div>
+  </div>
+
+  <!-- AD -->
+  <div class="ad-slot-inline">Advertisement — 728×90</div>
+
+</div>
+
+<!-- NEWSLETTER -->
+<section class="newsletter-section">
+  <div class="container">
+    <div class="nl-inner">
+      <div class="nl-left">
+        <h2>The PK-Times Briefing</h2>
+        <p>Every morning: three conflicts to watch, one diplomatic development, and one analysis piece — in under five minutes. Free, no spam, unsubscribe anytime.</p>
+        <div style="margin-top:16px;display:flex;gap:24px;flex-wrap:wrap;">
+          <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--gold2);font-size:18px;">✓</span><span style="font-family:var(--cond);font-size:11px;color:rgba(255,255,255,.5);">Morning War Briefing</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--gold2);font-size:18px;">✓</span><span style="font-family:var(--cond);font-size:11px;color:rgba(255,255,255,.5);">Diplomatic Intelligence</span></div>
+          <div style="display:flex;align-items:center;gap:8px;"><span style="color:var(--gold2);font-size:18px;">✓</span><span style="font-family:var(--cond);font-size:11px;color:rgba(255,255,255,.5);">Weekly Defence Digest</span></div>
+        </div>
+      </div>
+      <div class="nl-right">
+        <div class="nl-form">
+          <div class="nl-opts">
+            <label class="nl-opt"><input type="checkbox" checked><span>Morning Briefing</span></label>
+            <label class="nl-opt"><input type="checkbox"><span>Defence Weekly</span></label>
+            <label class="nl-opt"><input type="checkbox"><span>Diplomatic Cables</span></label>
+          </div>
+          <div class="nl-row">
+            <input class="nl-input" type="email" placeholder="Your email address" id="nl-email">
+            <button class="nl-btn" onclick="handleSubscribe()">Subscribe Free</button>
+          </div>
+          <div class="nl-note" id="nl-msg">By subscribing you agree to our Privacy Policy. You can unsubscribe at any time.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div><!-- /homepage -->
+
+<!-- ══════════════════════════════════════════ ARTICLE ══ -->
+<div id="article-page" style="display:none;">
+  <div class="container article-page">
+    <div class="art-back" onclick="closeArticle()">← Back to PK-Times</div>
+    <div class="art-layout">
+      <div>
+        <div class="art-header">
+          <div class="art-cat-bar">
+            <span class="cat" id="art-cat" style="color:var(--red);">War Report</span>
+            <span style="color:var(--smoke2);margin:0 8px;">·</span>
+            <span class="art-region" id="art-region">United Nations</span>
+          </div>
+          <h1 class="art-title" id="art-title">Security Council paralysed</h1>
+          <p class="art-deck" id="art-deck">Deck text here.</p>
+          <div class="art-meta">
+            <span class="author" id="art-author">James Whitfield</span>
+            <span>·</span><span id="art-role">Correspondent</span>
+            <span>·</span><span id="art-time">2 hours ago</span>
+            <span>·</span><span>9 min read</span>
+          </div>
+        </div>
+        <div class="art-hero"><img id="art-img" src="" alt=""></div>
+        <div class="art-cap" id="art-cap">Photo: File</div>
+        <div class="art-body" id="art-body"></div>
+      </div>
+      <div class="art-sidebar">
+        <div class="sidebar-widget">
+          <div class="widget-head">Related Stories</div>
+          <div class="widget-body">
+            <div class="widget-story" onclick="openArticle('hero')"><div class="widget-cat"><span class="cat cat-war">War</span></div><div class="widget-title">Security Council paralysed as maritime standoff enters third week</div></div>
+            <div class="widget-story" onclick="openArticle('d1')"><div class="widget-cat"><span class="cat cat-diplomacy">Diplomacy</span></div><div class="widget-title">G7 draft joint framework to curb proxy warfare funding</div></div>
+            <div class="widget-story" onclick="openArticle('an1')"><div class="widget-cat"><span class="cat cat-analysis">Analysis</span></div><div class="widget-title">The coming decade of contested maritime sovereignty</div></div>
+          </div>
+        </div>
+        <div style="margin-top:20px;" class="ad-slot-rect">Advertisement<br>300×250</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo">PK<span>-Times</span></div>
+        <p>Independent reporting on global affairs, war, defence, and diplomacy. Committed to accuracy, depth, and editorial independence.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#">Diplomacy</a></li>
+          <li><a href="#">Defence</a></li>
+          <li><a href="#">Conflicts</a></li>
+          <li><a href="#">Counter-Terror</a></li>
+          <li><a href="#">Local News</a></li>
+          <li><a href="#">Analysis</a></li>
+          <li><a href="#">Columns</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About PK-Times</a></li>
+          <li><a href="#">Editorial Standards</a></li>
+          <li><a href="#">Contact Newsroom</a></li>
+          <li><a href="#">Secure Tip Line</a></li>
+          <li><a href="#">Advertise With Us</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Subscribe</h4>
+        <ul>
+          <li><a href="#">Morning Briefing</a></li>
+          <li><a href="#">Defence Weekly</a></li>
+          <li><a href="#">Diplomatic Cables</a></li>
+          <li><a href="#">Premium Access</a></li>
+          <li><a href="#">RSS Feeds</a></li>
+          <li><a href="#">Podcast</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Use</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Corrections</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 PK-Times. All rights reserved. pk-times.com</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Advertise</a><a href="#">Contact</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- SUBSCRIBE MODAL -->
+<div class="modal-overlay" id="modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <div class="modal-close" onclick="closeModal()">×</div>
+    <h3>PK-Times Newsletter</h3>
+    <p>Get war reports, diplomatic intelligence, and defence briefings delivered to your inbox every morning. Free.</p>
+    <div class="modal-form">
+      <input type="text" placeholder="Your name">
+      <input type="email" placeholder="Email address" id="modal-email">
+      <button onclick="handleModalSubscribe()">Subscribe Now — It's Free</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Date
+document.getElementById('live-date').textContent = new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+
+// Article data
+const ART = {
+  hero:  {cat:'War Report',catClass:'cat-war',region:'United Nations',title:'Security Council paralysed as maritime standoff enters third week, diplomatic channels near collapse',deck:'Vetoes from two permanent members have deadlocked the United Nations as a flashpoint confrontation over contested shipping lanes threatens to draw regional naval forces into direct engagement.',author:'James Whitfield',role:'Senior Diplomatic Correspondent',time:'2 hours ago',img:'https://images.unsplash.com/photo-1614035781521-578f8e71fb78?w=900&q=70',cap:'The UN Security Council chamber, New York. Photo: UN Photo',body:`<p>The United Nations Security Council entered its third consecutive day of emergency deliberations without resolution, as the diplomatic paralysis surrounding a contested maritime corridor deepened into what several ambassadors privately described as the most serious institutional failure in years.</p><h2>The anatomy of a deadlock</h2><p>Two permanent members exercised veto rights against competing draft resolutions, leaving the international community without a formal response mechanism as naval vessels from three separate powers manoeuvred within engagement range of one another in the disputed zone.</p><blockquote>The architecture of post-war multilateralism was designed to manage great power competition, not to resolve it. What we are witnessing is the mechanism grinding against its own design limits.</blockquote><p>According to multiple diplomatic sources, the impasse reflects not merely disagreement over the current incident, but a deeper fracturing of the informal norms that allowed the Council to function even during periods of great power antagonism.</p><h2>Naval movements and risk of miscalculation</h2><p>The immediate physical danger lies not in deliberate military action but in the potential for miscalculation at sea. Defence analysts tracking vessel movements via commercial satellite imagery report that the current configuration represents the closest proximity of adversarial naval assets in over a decade.</p><p>GeoWatch has reviewed communications suggesting at least two incidents of radio contact between vessels flying different flags occurred in the past 48 hours — contacts not disclosed in any official statement.</p>`},
+  s1:    {cat:'Defence',catClass:'cat-defence',region:'NATO · Baltic',title:'NATO scrambles F-35 squadrons to Baltic amid classified intelligence warnings',deck:'The alliance has quietly repositioned additional F-35 aircraft to Baltic airfields following intelligence assessments of elevated threat levels.',author:'Marcus Brandt',role:'Defence Correspondent',time:'45 min ago',img:'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=70',cap:'File photo. Photo: NATO',body:`<p>NATO has repositioned two additional squadrons of F-35 Lightning II aircraft to airfields across Estonia, Latvia, and Lithuania, following intelligence assessments that remain classified but are described by senior alliance officials as credible and time-sensitive.</p><h2>What the repositioning signals</h2><p>The movement, confirmed by three NATO member governments, represents the largest single redeployment of fifth-generation aircraft to the Baltic region since the alliance began enhanced forward presence operations in 2017.</p><blockquote>This is not an exercise rotation. The timeline and the assets involved make that clear to anyone who follows these movements.</blockquote><p>A senior defence official, speaking on condition of anonymity because the intelligence underpinning the decision has not been publicly disclosed, described the posture change as a precautionary deterrent measure rather than preparation for offensive action.</p>`},
+  s2:    {cat:'Conflict',catClass:'cat-conflict',region:'Middle East',title:'Ceasefire collapses; ground offensive resumes in northern sector',deck:'A fragile 11-day ceasefire agreement has broken down, with ground forces resuming operations across the northern front amid heavy civilian displacement.',author:'Layla Nasser',role:'Middle East Bureau',time:'1 hr ago',img:'https://images.unsplash.com/photo-1580977251946-b79f33b38f15?w=900&q=70',cap:'File photo.',body:`<p>A ceasefire agreement brokered through Qatari mediation collapsed in the early hours of Thursday morning, with ground forces from both sides resuming offensive operations across the northern sector within hours of the breakdown.</p><p>The collapse ends an 11-day pause that had allowed some humanitarian convoys to access areas cut off for weeks. Aid organisations working in the region have warned that renewed fighting will sever the supply corridors re-established during the pause.</p><h2>Why the ceasefire failed</h2><p>Negotiators involved in the talks describe a fundamental divergence on two key issues that mediators were unable to bridge before the deadline: the status of captured territory and the sequencing of prisoner exchanges.</p><blockquote>Both sides came to the table with preconditions that were mutually exclusive. The mediators knew this. The talks were always more about optics than resolution.</blockquote>`},
+  s3:    {cat:'Counter-Terror',catClass:'cat-terrorism',region:'Europe',title:'European agencies dismantle cross-border terror financing network',deck:'A coordinated operation across seven countries has disrupted financial infrastructure used to fund extremist activity across three continents.',author:'Fatima Al-Hassan',role:'Security Correspondent',time:'3 hrs ago',img:'https://images.unsplash.com/photo-1605792657660-596af9009e82?w=900&q=70',cap:'File photo.',body:`<p>Intelligence and law enforcement agencies from seven European countries executed simultaneous operations in the early hours of Wednesday, dismantling what Europol described as one of the most sophisticated cross-border terrorist financing networks identified since 2015.</p><h2>Structure of the network</h2><p>The network used a combination of shell companies, cryptocurrency exchanges, and informal hawala transfers to move funds from donors in the Gulf region to operatives in three continents, according to a Europol statement released following the operation.</p><p>Forty-three individuals were detained across the participating countries. Asset seizures totalled approximately 28 million euros across bank accounts, cryptocurrency wallets, and physical property.</p>`},
+  t1:    {cat:'War Report',catClass:'cat-war',region:'Eastern Front',title:'Drone swarms overwhelm point-defence systems in contested airspace',deck:'First-person accounts and battlefield footage document a new tactical approach to saturating air defence networks at scale.',author:'Field Desk',role:'War Correspondent',time:'32 min ago',img:'https://images.unsplash.com/photo-1614035781521-578f8e71fb78?w=900&q=70',cap:'File photo.',body:`<p>Coordinated drone swarm attacks on air defence installations along the eastern front have overwhelmed point-defence systems in at least four documented engagements over the past week, according to field reports and verified video evidence reviewed by PK-Times.</p><p>The attacks represent a tactical evolution that military analysts say was predicted but has arrived faster and at greater scale than most assessments anticipated. The core challenge is numerical: current point-defence systems were designed to engage individual high-value targets, not waves of low-cost expendable platforms.</p><blockquote>You can intercept one. You can intercept five. You cannot intercept forty, and the attackers know that now.</blockquote>`},
+  t2:    {cat:'Diplomacy',catClass:'cat-diplomacy',region:'Asia',title:'Secret backchannel talks between nuclear-armed rivals confirmed by three independent sources',deck:'Senior officials from two nuclear-armed states have met covertly four times this year in a third country.',author:'Priya Mehta',role:'Diplomatic Affairs',time:'1 hr ago',img:'https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=900&q=70',cap:'File photo.',body:`<p>Three sources with direct knowledge of the meetings have independently confirmed to PK-Times that senior security officials from two nuclear-armed states have met four times this year in a third country, in talks focused on reducing the risk of inadvertent escalation to nuclear exchange.</p><p>The existence of the channel has not been publicly acknowledged by either government, and both have denied through official spokespersons that any such contact has taken place.</p><h2>What the talks cover</h2><p>According to two of the three sources, the discussions have focused primarily on establishing communication protocols for crisis situations, clarifying red lines that could trigger nuclear consideration, and reducing the role of hair-trigger alert postures on both sides.</p>`},
+  t3:    {cat:'Local News',catClass:'cat-local',region:'Pakistan',title:'Pakistan Foreign Office summons envoy over cross-border incursion allegations',deck:'The Foreign Office has lodged a formal protest following what officials described as a deliberate violation of the Line of Control.',author:'Islamabad Bureau',role:'Local Correspondent',time:'2 hrs ago',img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=70',cap:'File photo.',body:`<p>The Pakistani Foreign Office summoned the Indian High Commissioner on Wednesday to lodge a formal protest over what officials described as a deliberate military incursion across the Line of Control in the Azad Kashmir sector.</p><p>The Foreign Office statement described the incident as a violation of international norms and bilateral agreements governing conduct along the disputed boundary. The statement did not specify the exact location, date, or nature of the alleged incursion.</p><p>The Indian High Commission in Islamabad did not immediately respond to requests for comment.</p>`},
+  t4:    {cat:'Analysis',catClass:'cat-analysis',region:'Global Governance',title:'Why multilateral institutions are failing at the moment they are needed most',deck:'A structural analysis of the gap between the pace of geopolitical change and the capacity of international organisations to manage it.',author:'Dr. Elena Voronova',role:'Senior Analyst',time:'4 hrs ago',img:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=70',cap:'File photo.',body:`<p>The institutions built after 1945 were designed to manage a specific kind of international order — one anchored in American primacy, divided by a stable bipolar competition, and governed through a set of informal norms that were understood even when they were violated.</p><p>That order is gone. What has replaced it is not a new order but a contested interregnum in which multiple powers are simultaneously revising the rules of the international system in incompatible directions. The multilateral institutions designed for the old order are structurally unsuited to managing this transition.</p><blockquote>The problem is not that the Security Council vetoes too much. The problem is that veto powers no longer share even a minimal common interest in system stability.</blockquote><h2>The structural failure</h2><p>The Security Council's veto mechanism was always a feature, not a bug. The original designers understood that an institution without great power buy-in would be ignored. The veto was the price of membership for states whose cooperation was essential.</p><p>What the designers did not anticipate was a world in which the veto powers themselves would become the primary source of instability rather than its managers.</p>`},
+  an1:   {cat:'Analysis',catClass:'cat-analysis',region:'Maritime',title:'The coming decade of contested maritime sovereignty',deck:'Overlapping claims and weakening international norms are setting the stage for confrontation at sea.',author:'Prof. David Tan',role:'Maritime Security Fellow',time:'Yesterday',img:'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=70',cap:'File photo.',body:`<p>The next decade will see more contested maritime sovereignty than at any point since the end of the Second World War. The combination of resource competition, military modernisation, and the erosion of the legal frameworks governing the seas has created a structure of incentives that points toward confrontation.</p><p>Understanding why requires looking at each element separately before examining how they interact.</p><h2>Resource competition</h2><p>The most immediate driver is hydrocarbon competition. Significant undiscovered reserves are believed to lie under contested waters in the South China Sea, the East Mediterranean, and the Arctic. As energy security concerns intensify globally, the political cost of conceding these claims rises.</p>`},
+  an2:   {cat:'Analysis',catClass:'cat-analysis',region:'Technology & War',title:'Drone warfare has permanently altered the cost calculus of territorial defence',deck:'Cheap attritable systems are eroding the advantage held by expensive precision platforms — and states are only beginning to adapt.',author:'Dr. Claire Svensson',role:'Technology & Conflict',time:'Yesterday',img:'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=70',cap:'File photo.',body:`<p>The emergence of cheap, mass-produced drone systems as a primary instrument of territorial contestation represents a genuine revolution in the conduct of war — one whose full implications have not yet been absorbed by the states most affected by it.</p><p>The core shift is economic. For decades, military advantage accrued to states that could field the most expensive and capable platforms. A single F-35 costs over $80 million. A single Shahed-136 costs approximately $20,000. When the latter can destroy the former on the ground, the economic logic of air power changes fundamentally.</p>`},
+  an3:   {cat:'Analysis',catClass:'cat-analysis',region:'Foreign Policy',title:'Why sanctions rarely achieve their stated objectives — yet governments keep using them',deck:'An empirical review of 40 years of economic coercion as foreign policy instrument.',author:'Nadia Kowalczyk',role:'Strategic Studies Institute',time:'2 days ago',img:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=70',cap:'File photo.',body:`<p>Sanctions have become the default foreign policy instrument for governments that find themselves unwilling to use force but unable to achieve objectives through diplomacy alone. The empirical record on their effectiveness, however, is considerably less encouraging than their political popularity would suggest.</p><p>A review of major sanctions regimes imposed since 1980 finds that fewer than one in five achieved their primary stated objective within the timeframe originally anticipated. The success rate for sanctions imposed by coalitions is marginally higher, but remains below thirty percent by the most generous coding criteria.</p><blockquote>Sanctions are the policy of choice for governments that need to be seen to be doing something without committing to the costs of actually doing it.</blockquote>`},
+  d1:{cat:'Diplomacy',catClass:'cat-diplomacy',region:'G7',title:'G7 foreign ministers draft joint framework to curb proxy warfare funding',deck:'A confidential draft circulated ahead of the Italy summit proposes a multilateral sanctions mechanism.',author:'Priya Mehta',role:'Diplomatic Affairs',time:'5 hrs ago',img:'https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=900&q=70',cap:'File photo.',body:`<p>A confidential draft framework circulated among G7 foreign ministries ahead of the Italy summit proposes a coordinated multilateral sanctions mechanism specifically targeting third-party financiers of proxy conflicts, according to three diplomatic sources familiar with the document.</p><p>The draft, which has not been publicly released, would establish a joint designation process allowing G7 members to collectively blacklist entities providing financial support to non-state armed groups operating in active conflict zones.</p>`},
+  d2:{cat:'Diplomacy',catClass:'cat-diplomacy',region:'ASEAN',title:'ASEAN mediators propose neutral monitoring zone in disputed straits',deck:'Southeast Asian bloc moves to insert itself diplomatically as great power rivalry threatens freedom of navigation.',author:'Aiyana Reyes',role:'Asia Correspondent',time:'6 hrs ago',img:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=70',cap:'File photo.',body:`<p>ASEAN foreign ministers have proposed the establishment of a neutral maritime monitoring zone in the contested straits at the centre of the current standoff, positioning the regional bloc as a potential mediating force between the competing great powers.</p><p>The proposal, outlined in a joint communique released after an emergency meeting of ASEAN foreign ministers in Kuala Lumpur, calls for a 90-day monitoring arrangement under which vessels from all parties would be observed by a joint civilian team.</p>`},
+  d3:{cat:'Diplomacy',catClass:'cat-diplomacy',region:'Global',title:'Informal summits reshaping alliances that formal treaties cannot capture',deck:'A parallel architecture of bilateral meetings is producing the actual agreements that govern state behaviour.',author:'James Whitfield',role:'Senior Correspondent',time:'Yesterday',img:'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=70',cap:'File photo.',body:`<p>Beneath the scheduled multilateral forums and their heavily choreographed communiques, a parallel architecture of informal bilateral and minilateral meetings has emerged as the primary venue for producing the actual understandings that govern state behaviour in the current international environment.</p><p>These informal summits — held in private residences, on the margins of international gatherings, or in third countries chosen for their discretion rather than their diplomatic significance — leave no formal record and produce no binding agreements.</p>`},
+  def1:{cat:'Defence',catClass:'cat-defence',region:'Indo-Pacific',title:'Fifth-generation air superiority gap widens as adversary production outpaces Western procurement',deck:'Classified assessments reveal a numerical disadvantage forming in the Indo-Pacific.',author:'Sarah Chen',role:'Defence Desk',time:'5 hrs ago',img:'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=70',cap:'File photo.',body:`<p>Classified assessments obtained by PK-Times reveal a significant and widening numerical disadvantage in fifth-generation combat aircraft in the Indo-Pacific theatre, as adversary production rates continue to exceed Western procurement schedules by a growing margin.</p><p>The gap is not projected to close under current procurement plans. The combination of production delays, cost overruns, and retirement schedules for legacy platforms means that the operational inventory available to alliance members in the theatre is likely to decrease in absolute terms over the next five years even as adversary numbers grow.</p>`},
+  def2:{cat:'Defence',catClass:'cat-defence',region:'Pacific',title:'Submarine arms race in the Pacific accelerates beyond Cold War precedent',deck:'Three navies simultaneously expanding undersea fleets in the most intensive competition in 60 years.',author:'Marcus Brandt',role:'Defence Correspondent',time:'7 hrs ago',img:'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=70',cap:'File photo.',body:`<p>Three separate navies are simultaneously expanding, modernising, and deploying their undersea fleets in the same Pacific theatre in a competition that naval analysts say is the most intensive since the height of the Cold War — and in some respects exceeds it.</p><p>The scale of concurrent submarine construction programmes underway is without modern precedent. Combined, the three programmes represent an investment of over $400 billion across the next decade, with delivery schedules that are compressing rather than extending as industrial capacity is prioritised.</p>`},
+  def3:{cat:'Defence',catClass:'cat-defence',region:'Pakistan',title:'Pakistan deploys additional armoured units to northern sector following intelligence assessment',deck:'Sources within GHQ describe the movement as a precautionary posture review.',author:'Usman Raza',role:'Islamabad Bureau',time:'9 hrs ago',img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=70',cap:'File photo.',body:`<p>Pakistan has deployed additional armoured and mechanised infantry units to its northern sector following an intelligence assessment that GHQ sources describe as a precautionary posture review rather than preparation for offensive action.</p><p>The movement, which began approximately 72 hours ago, involves the repositioning of assets from their peacetime garrisons to forward holding areas consistent with standard contingency protocols. Defence sources emphasised that the deployment falls within the parameters of routine readiness maintenance.</p>`},
+  c1:{cat:'Conflict',catClass:'cat-conflict',region:'Global',title:'Urban warfare doctrine is evolving faster than military academies can absorb',deck:'Commanders who fought in dense urban terrain describe a fundamental break from doctrines written for open-ground manoeuvre warfare.',author:'Aleksei Kurov',role:'Conflict Correspondent',time:'8 hrs ago',img:'https://images.unsplash.com/photo-1580977251946-b79f33b38f15?w=900&q=70',cap:'File photo.',body:`<p>Military commanders who have fought in the dense urban environments that have defined the most intense conflicts of the past decade describe a doctrine gap that academia and training establishments have not yet closed — and may not close before the next major urban battle begins.</p><p>The fundamental challenge is that urban warfare doctrine was largely written by people who had not experienced modern urban combat at scale. The physical and psychological environment of a contested megacity bears almost no resemblance to the training environments in which most professional militaries prepare their forces.</p>`},
+  c2:{cat:'Conflict',catClass:'cat-conflict',region:'Eastern Europe',title:'Eastern front: artillery exchanges intensify along 140km contact line',deck:'Satellite imagery and acoustic monitoring confirm significant increase in fire volume over 72 hours.',author:'Field Desk',role:'War Correspondent',time:'3 hrs ago',img:'https://images.unsplash.com/photo-1614035781521-578f8e71fb78?w=900&q=70',cap:'File photo.',body:`<p>Artillery exchanges along the 140-kilometre contact line on the eastern front have intensified significantly over the past 72 hours, according to satellite imagery analysis and acoustic monitoring data reviewed by PK-Times.</p><p>The data, compiled from commercial satellite providers and open-source acoustic monitoring networks, shows a three-to-four-fold increase in the rate of fire on multiple sections of the contact line compared with the preceding two weeks.</p>`},
+  c3:{cat:'Conflict',catClass:'cat-conflict',region:'South Asia',title:'The mountain passes that determine which power controls the roof of the world',deck:'A ground-level examination of high-altitude positions whose tactical significance far exceeds their remote location.',author:'Vikram Nair',role:'South Asia Correspondent',time:'2 days ago',img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=70',cap:'File photo.',body:`<p>At altitudes where the air is too thin for most military vehicles to operate efficiently and the cold kills more soldiers than the enemy, a series of mountain passes are determining the strategic balance between two nuclear-armed powers. Their names appear in no commercial atlas. Their ownership has cost thousands of lives.</p><p>The passes that matter most in this competition are not the famous ones that appear in histories of the Great Game. They are narrower, higher, and more obscure — chosen not for their commercial or cultural significance but for the tactical leverage they provide over the valleys below.</p>`},
+  ter2:{cat:'Counter-Terror',catClass:'cat-terrorism',region:'Global',title:'Encrypted platforms become primary recruitment infrastructure for decentralised cells',deck:'An 18-month intelligence review finds end-to-end encryption has fundamentally changed how extremist organisations radicalise members.',author:'Intelligence Desk',role:'Security Correspondent',time:'Yesterday',img:'https://images.unsplash.com/photo-1605792657660-596af9009e82?w=900&q=70',cap:'File photo.',body:`<p>End-to-end encrypted messaging platforms have become the primary infrastructure for extremist recruitment and radicalisation, replacing open social media as the dominant venue for identifying, targeting, and converting new members of decentralised terror networks, according to an 18-month intelligence review.</p><p>The shift represents a fundamental operational adaptation by extremist organisations that has outpaced the legal and technical tools available to intelligence services in most jurisdictions.</p>`},
+  ter3:{cat:'Counter-Terror',catClass:'cat-terrorism',region:'Africa',title:'Sahel counter-terror policy has failed because external partners misread local grievances',deck:'The fundamental error was treating an insurgency rooted in governance failure as a military problem.',author:'Aisha Mbeki',role:'African Security Research Group',time:'2 days ago',img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=70',cap:'File photo.',body:`<p>The failure of counter-terrorism policy across the Sahel belt is not primarily a story of insufficient resources, inadequate training, or poor intelligence. It is a story of systematic misreading of the problem being addressed — and the persistence of that misreading in the face of accumulating evidence that it was wrong.</p><p>External partners, led initially by France and increasingly by a rotating cast of American, European, and Gulf-state actors, consistently framed the insurgency as a security problem with a military solution. The insurgency was and remains primarily a governance problem, with a political economy that military force cannot address.</p>`},
+  l1:{cat:'Local News',catClass:'cat-local',region:'Pakistan',title:'Foreign Office summons Indian envoy over alleged cross-border incursion in Azad Kashmir',deck:'Pakistan lodges formal protest following what officials described as a deliberate violation of the Line of Control.',author:'Islamabad Bureau',role:'Local Correspondent',time:'2 hrs ago',img:'https://images.unsplash.com/photo-1521295121783-8a321d551ad2?w=900&q=70',cap:'File photo.',body:`<p>The Pakistani Foreign Office summoned the Indian High Commissioner on Wednesday to lodge a formal protest over what officials described as a deliberate military incursion across the Line of Control in the Azad Kashmir sector.</p>`},
+  l2:{cat:'Local News',catClass:'cat-local',region:'Pakistan',title:'Pakistan Navy commissions two Type-054 frigates acquired from China in Karachi ceremony',deck:'The commissioning marks the most significant single addition to Pakistan Naval fleet in over a decade.',author:'Karachi Bureau',role:'Naval Correspondent',time:'4 hrs ago',img:'https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=900&q=70',cap:'File photo.',body:`<p>The Pakistan Navy commissioned two Type-054A/P frigates in a ceremony at PNS Iqbal in Karachi on Wednesday, marking the most significant single addition to the fleet's surface combatant strength in over a decade.</p>`},
+  l3:{cat:'Local News',catClass:'cat-local',region:'Pakistan',title:'Senate defence committee approves revised military budget with 18 percent increase in R&D allocation',deck:'The revised budget reflects a strategic pivot toward indigenous defence production.',author:'Usman Raza',role:'Islamabad Bureau',time:'6 hrs ago',img:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=70',cap:'File photo.',body:`<p>The Senate Standing Committee on Defence approved a revised military budget allocation on Tuesday that increases research and development spending by 18 percent, in what committee members described as a strategic pivot toward accelerating indigenous defence production capability.</p>`},
+  l4:{cat:'Local News',catClass:'cat-local',region:'Pakistan',title:'COAS holds security review with corps commanders following western border intelligence assessment',deck:'Sources describe the meeting as a routine operational review elevated in response to specific intelligence.',author:'GHQ Correspondent',role:'Defence Correspondent',time:'8 hrs ago',img:'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=70',cap:'File photo.',body:`<p>The Chief of Army Staff convened an unscheduled corps commanders conference on Tuesday following receipt of an intelligence assessment related to the western border, according to defence sources familiar with the meeting.</p>`},
+  op1:{cat:'Opinion',catClass:'cat-columns',region:'Defence Policy',title:'The West is re-learning the lessons of industrial warfare it spent 30 years trying to forget',deck:'Robert Haines on why the education may not arrive fast enough.',author:'Robert Haines',role:'Former NATO Deputy Secretary',time:'Yesterday',img:'https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=70',cap:'File photo.',body:`<p>There is a painful irony at the centre of the current Western defence predicament. The military establishments that are now scrambling to rebuild industrial production capacity, reconstitute stockpiles, and revise doctrine for high-intensity warfare are doing so largely from institutional memory that was deliberately erased.</p><p>The post-Cold War dividend was real and the decisions that consumed it were not irrational at the time. Governments facing fiscal pressure and no obvious peer competitor chose to prioritise other expenditures over maintaining capabilities for a kind of warfare they believed had become obsolete.</p><blockquote>The price of that choice is now being calculated in real time, on battlefields that were supposed to be impossible.</blockquote>`},
+  op2:{cat:'Opinion',catClass:'cat-columns',region:'Pakistan Strategy',title:"Pakistan's strategic depth doctrine must evolve before circumstances force the issue",deck:'Zara Mahmood on the gap between inherited strategic doctrine and current regional realities.',author:'Zara Mahmood',role:'Strategic Studies Institute, Islamabad',time:'Yesterday',img:'https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=900&q=70',cap:'File photo.',body:`<p>Pakistan's strategic doctrine emerged from specific historical circumstances that no longer fully obtain. The concept of strategic depth — seeking to ensure that Pakistan could not be militarily overwhelmed by trading space for time — was developed in an era when the primary threat was a conventional land invasion from the east and when Afghanistan represented the available space.</p><p>Both premises require examination in the current environment.</p>`},
+  op3:{cat:'Opinion',catClass:'cat-columns',region:'Africa',title:'Counter-terrorism in the Sahel has failed because we misread the problem from the beginning',deck:'Aisha Mbeki on the systematic misdiagnosis that has defined two decades of failed policy.',author:'Aisha Mbeki',role:'African Security Research Group',time:'2 days ago',img:'https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=900&q=70',cap:'File photo.',body:`<p>Failure in the Sahel has been consistent, comprehensive, and expensive. Across two decades and multiple intervention frameworks, external actors have failed to reduce the territorial reach of jihadist insurgencies, reduce the rate of violence affecting civilian populations, or create the conditions for sustainable governance in the affected states.</p>`},
+};
+
+function openArticle(id) {
+  const a = ART[id]; if (!a) return;
+  document.getElementById('art-cat').textContent = a.cat;
+  document.getElementById('art-cat').className = 'cat ' + a.catClass;
+  document.getElementById('art-region').textContent = a.region;
+  document.getElementById('art-title').textContent = a.title;
+  document.getElementById('art-deck').textContent = a.deck;
+  document.getElementById('art-author').textContent = a.author;
+  document.getElementById('art-role').textContent = a.role;
+  document.getElementById('art-time').textContent = a.time;
+  document.getElementById('art-img').src = a.img;
+  document.getElementById('art-img').alt = a.title;
+  document.getElementById('art-cap').textContent = a.cap;
+  document.getElementById('art-body').innerHTML = a.body;
+  document.getElementById('homepage').style.display = 'none';
+  document.getElementById('article-page').style.display = 'block';
+  window.scrollTo(0,0);
+}
+
+function closeArticle() {
+  document.getElementById('homepage').style.display = 'block';
+  document.getElementById('article-page').style.display = 'none';
+  window.scrollTo(0,0);
+}
+
+function showHome(e) {
+  e.preventDefault();
+  closeArticle();
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  e.target.classList.add('active');
+}
+
+function filterCat(cat, e) {
+  e.preventDefault();
+  document.querySelectorAll('.nav-links a').forEach(a=>a.classList.remove('active'));
+  e.target.classList.add('active');
+}
+
+function openModal() {
+  document.getElementById('modal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeModal() {
+  document.getElementById('modal').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeModalOutside(e) {
+  if(e.target===document.getElementById('modal')) closeModal();
+}
+
+function handleSubscribe() {
+  const el = document.getElementById('nl-email');
+  const msg = document.getElementById('nl-msg');
+  if(el.value && el.value.includes('@')) {
+    el.value='';
+    msg.textContent='Subscribed! Check your inbox for a confirmation email.';
+    msg.style.color='#2ecc71';
+    setTimeout(()=>{msg.textContent='By subscribing you agree to our Privacy Policy.';msg.style.color='';},5000);
+  }
+}
+function handleModalSubscribe() {
+  const el = document.getElementById('modal-email');
+  if(el.value && el.value.includes('@')) { closeModal(); }
+}
+</script>
+</body>
+</html>
